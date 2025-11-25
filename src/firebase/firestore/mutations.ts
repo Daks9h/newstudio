@@ -13,7 +13,7 @@ import {
   FirestorePermissionError,
   type SecurityRuleContext,
 } from '@/firebase/errors';
-import type { UserProfile, PDSComplaint, ServiceRequestForm } from '@/lib/types';
+import type { UserProfile, PDSComplaint, ServiceRequestForm, Application } from '@/lib/types';
 
 export function updateUserProfile(
   db: Firestore,
@@ -106,4 +106,28 @@ export function saveServiceRequest(
         } satisfies SecurityRuleContext);
         errorEmitter.emit('permission-error', permissionError);
     });
+}
+
+export function saveApplication(
+  db: Firestore,
+  userId: string,
+  schemeName: string
+) {
+  const appCollection = collection(db, 'applications');
+  const newApplication: Application = {
+    userId,
+    schemeName,
+    submissionDate: serverTimestamp(),
+    status: 'Pending',
+  };
+
+  addDoc(appCollection, newApplication)
+  .catch(async (serverError) => {
+      const permissionError = new FirestorePermissionError({
+          path: appCollection.path,
+          operation: 'create',
+          requestResourceData: newApplication,
+      } satisfies SecurityRuleContext);
+      errorEmitter.emit('permission-error', permissionError);
+  });
 }

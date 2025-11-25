@@ -53,12 +53,14 @@ export type GovernmentScheme = {
   description: string;
   icon: LucideIcon;
   slug: string;
+  category: string;
 };
 
 export type SchemeDetails = {
     name: string;
     slug: string;
     icon: LucideIcon;
+    category: string;
     shortDescription: string;
     longDescription: string;
     eligibility: string[];
@@ -75,9 +77,10 @@ export type UserProfile = {
 };
 
 export type Application = {
-  id: string;
+  id?: string;
+  userId: string;
   schemeName: string;
-  submissionDate: string;
+  submissionDate: any;
   status: 'Pending' | 'Approved' | 'Rejected';
 };
 

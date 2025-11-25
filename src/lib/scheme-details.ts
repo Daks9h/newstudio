@@ -1,5 +1,5 @@
 
-import { Leaf, HeartPulse, Users, Home, Flame, Shield, Droplets, Banknote, School, Sprout, IndianRupee, Baby } from "lucide-react";
+import { Leaf, HeartPulse, Users, Home, Flame, Shield, Droplets, Banknote, School, Sprout, IndianRupee, Baby, PersonStanding, School2, Briefcase } from "lucide-react";
 import type { SchemeDetails } from "./types";
 
 export const allSchemeDetails: SchemeDetails[] = [
@@ -7,6 +7,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "PM-KISAN",
     slug: "pm-kisan",
     icon: Leaf,
+    category: "Agriculture",
     shortDescription: "Income support of ₹6,000 per year for all landholding farmer families.",
     longDescription: "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN) is a central sector scheme with 100% funding from Government of India. It has become operational from 1.12.2018. Under the scheme an income support of 6,000/- per year in three equal installments will be provided to all land holding farmer families.",
     eligibility: [
@@ -30,6 +31,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "Ayushman Bharat (PM-JAY)",
     slug: "ayushman-bharat",
     icon: HeartPulse,
+    category: "Healthcare",
     shortDescription: "Health insurance coverage up to ₹5 lakh per family per year.",
     longDescription: "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY) is a national public health insurance fund of the Government of India that aims to provide free access to health insurance coverage for low income earners in the country. It provides a cover of ₹5 lakh per family per year for secondary and tertiary care hospitalization.",
     eligibility: [
@@ -52,6 +54,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "MGNREGA",
     slug: "mgnrega",
     icon: Users,
+    category: "Employment",
     shortDescription: "Guarantees 100 days of wage employment in a financial year to a rural household.",
     longDescription: "The Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA) aims to enhance livelihood security in rural areas by providing at least 100 days of guaranteed wage employment in a financial year to every household whose adult members volunteer to do unskilled manual work.",
     eligibility: [
@@ -73,6 +76,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "PM Awas Yojana (Gramin)",
     slug: "pm-awas-yojana",
     icon: Home,
+    category: "Housing",
     shortDescription: "Financial assistance for constructing a 'pucca' (permanent) house with basic amenities.",
     longDescription: "Pradhan Mantri Awas Yojana - Gramin (PMAY-G) aims to provide a pucca house with basic amenities to all houseless households and households living in kutcha and dilapidated house in rural areas by 2024.",
     eligibility: [
@@ -94,6 +98,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "PM Ujjwala Yojana",
     slug: "pm-ujjwala-yojana",
     icon: Flame,
+    category: "Basic Needs",
     shortDescription: "Provides clean cooking fuel (LPG) to women from Below Poverty Line (BPL) households.",
     longDescription: "The Pradhan Mantri Ujjwala Yojana (PMUY) aims to safeguard the health of women and children by providing them with clean cooking fuel (LPG), so they don’t have to compromise their health in smoky kitchens.",
     eligibility: [
@@ -116,6 +121,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "PM Fasal Bima Yojana",
     slug: "pm-fasal-bima-yojana",
     icon: Shield,
+    category: "Agriculture",
     shortDescription: "Crop insurance for farmers against yield losses due to unforeseen events.",
     longDescription: "The Pradhan Mantri Fasal Bima Yojana (PMFBY) provides a comprehensive insurance cover against failure of the crop thus helping in stabilising the income of the farmers.",
     eligibility: [
@@ -138,6 +144,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "Atal Pension Yojana (APY)",
     slug: "atal-pension-yojana",
     icon: IndianRupee,
+    category: "Social Welfare",
     shortDescription: "A pension scheme for citizens in the unorganized sector, providing a fixed monthly pension.",
     longDescription: "Atal Pension Yojana (APY) is a government-backed pension scheme in India, targeted at the unorganized sector. Subscribers receive a fixed monthly pension of ₹1,000 to ₹5,000 after the age of 60, depending on their contributions.",
     eligibility: [
@@ -160,6 +167,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     name: "Sukanya Samriddhi Yojana (SSY)",
     slug: "sukanya-samriddhi-yojana",
     icon: Baby,
+    category: "Social Welfare",
     shortDescription: "A small savings scheme for the girl child to build a fund for her future.",
     longDescription: "The Sukanya Samriddhi Yojana (SSY) is a savings scheme launched as part of the Beti Bachao, Beti Padhao campaign. It enables parents to build a fund for the future education and marriage expenses for their female child.",
     eligibility: [
@@ -175,5 +183,72 @@ export const allSchemeDetails: SchemeDetails[] = [
     ],
     documents: ["SSY Account Opening Form", "Birth Certificate of the Girl Child", "Guardian's ID Proof", "Guardian's Address Proof"],
     websiteUrl: "https://www.indiapost.gov.in/Financial/Pages/Content/sukanya-samriddhi-yojana.aspx",
+  },
+  {
+    name: "Old Age Pension Scheme",
+    slug: "old-age-pension",
+    icon: PersonStanding,
+    category: "Social Welfare",
+    shortDescription: "Provides monthly financial assistance to senior citizens who are in need.",
+    longDescription: "The Indira Gandhi National Old Age Pension Scheme (IGNOAPS) is a non-contributory old age pension scheme that covers Indians who are 60 years and above and live below the poverty line.",
+    eligibility: [
+      "Applicant must be 60 years or older.",
+      "Must belong to a household living below the poverty line (BPL) as per government criteria.",
+      "Must not be receiving any other pension from the government or any other source."
+    ],
+    applicationProcess: [
+      "Visit the Social Welfare Department or the Block Development Office in your area.",
+      "Obtain the application form for the Old Age Pension Scheme.",
+      "Fill the form completely and attach all required documents.",
+      "Submit the form to the concerned authority.",
+      "The application will be verified, and after approval, the pension amount will be credited to the beneficiary's bank account."
+    ],
+    documents: ["Aadhaar Card", "Proof of Age (Birth Certificate or School Certificate)", "BPL Ration Card", "Bank Passbook", "Passport-size Photograph"],
+    websiteUrl: "https://nsap.nic.in/nsap-component/indira-gandhi-national-old-age-pension-scheme",
+  },
+  {
+    name: "National Scholarship Portal",
+    slug: "national-scholarship",
+    icon: School2,
+    category: "Social Welfare",
+    shortDescription: "A single portal for students to apply for various educational scholarships.",
+    longDescription: "The National Scholarship Portal (NSP) is a one-stop solution through which various services starting from student application, receipt, processing, sanction and disbursal of various scholarships to students are enabled.",
+    eligibility: [
+      "Eligibility varies greatly depending on the specific scholarship.",
+      "Open to students from primary school to post-doctoral level.",
+      "Schemes are available for minority communities, SC/ST students, and students with disabilities, among others."
+    ],
+    applicationProcess: [
+      "Visit the National Scholarship Portal (NSP) website.",
+      "Click on 'New Registration' on the top menu.",
+      "Read the guidelines, agree to the terms, and continue.",
+      "Fill in your basic details like state, scholarship category, name, date of birth, mobile number, and bank details.",
+      "Register and you will receive an Application ID.",
+      "Log in with your Application ID and password to complete the detailed application form and apply for specific schemes."
+    ],
+    documents: ["Aadhaar Card", "Educational Certificates", "Caste/Community Certificate (if applicable)", "Income Certificate", "Bank Passbook", "Passport-size Photograph"],
+    websiteUrl: "https://scholarships.gov.in/",
+  },
+  {
+    name: "Mudra Yojana (PMMY)",
+    slug: "mudra-yojana",
+    icon: Briefcase,
+    category: "Social Welfare",
+    shortDescription: "Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises.",
+    longDescription: "Pradhan Mantri MUDRA Yojana (PMMY) provides loans to small business owners. Loans are given through commercial banks, RRBs, Small Finance Banks, MFIs and NBFCs. The borrower can approach any of these lending institutions or apply online.",
+    eligibility: [
+      "Any Indian Citizen who has a business plan for a non-farm sector income generating activity.",
+      "The business must be in manufacturing, processing, trading or service sector.",
+      "The credit need should be up to ₹10 lakh."
+    ],
+    applicationProcess: [
+      "Visit the Udyamimitra portal (www.udyamimitra.in) to apply online.",
+      "Alternatively, visit the nearest branch of a bank, MFI, or NBFC.",
+      "Present your business idea along with the filled MUDRA loan application form.",
+      "Submit all the required documents.",
+      "The loan will be sanctioned based on the bank's eligibility norms."
+    ],
+    documents: ["MUDRA Application Form", "Proof of Identity & Address (Aadhaar, Voter ID, etc.)", "Business Plan", "Quotations for machinery/items to be purchased", "Passport-size Photographs"],
+    websiteUrl: "https://www.mudra.org.in/",
   }
 ];

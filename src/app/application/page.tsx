@@ -12,6 +12,8 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ArrowLeft } from 'lucide-react';
+import { useAuth, useFirebase } from '@/firebase/provider';
+import { saveApplication } from '@/firebase/firestore/mutations';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 const ACCEPTED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'];
@@ -35,8 +37,12 @@ type ApplicationFormValues = z.infer<typeof applicationSchema>;
 
 function ApplicationForm() {
     const searchParams = useSearchParams();
+    const router = useRouter();
     const scheme = searchParams.get('scheme') || 'the selected scheme';
+    const schemeName = scheme.replace(/-/g, ' ');
     const { toast } = useToast();
+    const { user } = useAuth();
+    const { firestore } = useFirebase() as any;
 
     const form = useForm<ApplicationFormValues>({
         resolver: zodResolver(applicationSchema),
@@ -50,18 +56,36 @@ function ApplicationForm() {
     });
 
     function onSubmit(data: ApplicationFormValues) {
-        console.log(data);
+        if (!user || !firestore) {
+            toast({
+                variant: 'destructive',
+                title: 'Authentication Error',
+                description: 'You must be logged in to submit an application.',
+            });
+            return;
+        }
+
+        // NOTE: The form data (name, phone, etc.) and document are not currently
+        // being saved to Firestore. The current implementation only saves the
+        // userId, schemeName, status, and a timestamp.
+        // To save the full application, you would need to:
+        // 1. Implement file uploads to Firebase Storage.
+        // 2. Extend the 'saveApplication' mutation to include all form fields.
+
+        saveApplication(firestore, user.uid, schemeName);
+
         toast({
             title: 'Application Submitted!',
-            description: `Your application for ${scheme.replace(/-/g, ' ')} has been received.`,
+            description: `Your application for ${schemeName} has been received. You can track its status in 'My Applications'.`,
         });
         form.reset();
+        router.push('/my-applications');
     }
 
     return (
         <Card className="max-w-2xl mx-auto">
             <CardHeader>
-                <CardTitle className="font-headline text-2xl">Application for {scheme.replace(/-/g, ' ')}</CardTitle>
+                <CardTitle className="font-headline text-2xl">Application for {schemeName}</CardTitle>
                 <CardDescription>Please fill out the form below to apply.</CardDescription>
             </CardHeader>
             <CardContent>

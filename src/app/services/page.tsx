@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Landmark, HeartPulse, GraduationCap, Building2 } from "lucide-react";
+import { Landmark, HeartPulse, GraduationCap, Building2, Users } from "lucide-react";
 import type { Service } from "@/lib/types";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import Link from "next/link";
@@ -24,8 +24,8 @@ const servicesData: Service[] = [
       {
         name: "Social Welfare Schemes",
         description: "Information on pensions, scholarships, and grants.",
-        icon: Landmark,
-        href: "#",
+        icon: Users,
+        href: "/schemes?tab=social-welfare",
       },
     ],
   },
