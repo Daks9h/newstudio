@@ -113,3 +113,18 @@ export type ServiceRequestForm = {
   purpose: string;
   document: any;
 };
+
+export type CourseLesson = {
+  videoId: string;
+  title: string;
+  summary: string;
+};
+
+export type Course = {
+  title: string;
+  slug: string;
+  description: string;
+  lessons: CourseLesson[];
+  quiz: QuizQuestion[];
+  icon: LucideIcon;
+};
