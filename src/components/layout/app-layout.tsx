@@ -18,7 +18,6 @@ import {
   BrainCircuit,
   GraduationCap,
   LayoutDashboard,
-  Leaf,
   LineChart,
   MessagesSquare,
   LogOut,
@@ -39,6 +38,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { ThemeToggle } from '../theme-toggle';
+import { Logo } from '../logo';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -116,7 +116,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <Sidebar side="left" variant="sidebar" collapsible="icon">
         <SidebarHeader className="items-center justify-between p-4 group-data-[collapsible=icon]:justify-center">
           <Link href="/" className="flex items-center gap-2">
-            <Leaf className="h-8 w-8 text-primary" />
+            <Logo className="h-8 w-8 text-primary" />
             <span className="text-lg font-bold font-headline group-data-[collapsible=icon]:hidden">
               Digital सखी
             </span>
