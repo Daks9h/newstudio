@@ -2,9 +2,6 @@
 
 # Digital सखी: A Digital Hub for Rural Empowerment
 
-<p align="center">
-  <img src="https://storage.googleapis.com/stabl-media/6f021e1a-9642-4f36-a19b-2207b7b137b0.png" alt="Digital Sakhi Logo" width="150">
-</p>
 
 <p align="center">
   <strong>An integrated digital platform designed to bridge the information gap and empower rural communities by providing seamless access to essential services, government schemes, and digital literacy resources.</strong>
