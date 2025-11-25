@@ -63,12 +63,6 @@ const servicesData = [
         href: "/services/local-school",
       },
       {
-        name: "Adult Literacy Program",
-        description: "Enroll in free courses to improve digital skills and literacy.",
-        icon: GraduationCap,
-        href: "/resources",
-      },
-      {
         name: "Digital Skilling Center",
         description: "Access all courses on computer basics, internet, payments, and more.",
         icon: Laptop,
