@@ -2,15 +2,60 @@
 
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import { SidebarTrigger } from '@/components/ui/sidebar';
+
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+const ACCEPTED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'];
+
+const applicationSchema = z.object({
+  fullName: z.string().min(1, 'Full name is required'),
+  village: z.string().min(1, 'Village is required'),
+  phone: z.string().regex(/^\d{10}$/, 'Please enter a valid 10-digit phone number'),
+  aadhaar: z.string().regex(/^\d{12}$/, 'Please enter a valid 12-digit Aadhaar number'),
+  document: z
+    .any()
+    .refine((files) => files?.length == 1, 'Document is required.')
+    .refine((files) => files?.[0]?.size <= MAX_FILE_SIZE, `Max file size is 2MB.`)
+    .refine(
+      (files) => ACCEPTED_FILE_TYPES.includes(files?.[0]?.type),
+      '.jpg, .jpeg, .png, .webp and .pdf files are accepted.'
+    ),
+});
+
+type ApplicationFormValues = z.infer<typeof applicationSchema>;
 
 function ApplicationForm() {
     const searchParams = useSearchParams();
     const scheme = searchParams.get('scheme') || 'the selected scheme';
+    const { toast } = useToast();
+
+    const form = useForm<ApplicationFormValues>({
+        resolver: zodResolver(applicationSchema),
+        defaultValues: {
+            fullName: '',
+            village: '',
+            phone: '',
+            aadhaar: '',
+            document: undefined,
+        },
+    });
+
+    function onSubmit(data: ApplicationFormValues) {
+        console.log(data);
+        toast({
+            title: 'Application Submitted!',
+            description: `Your application for ${scheme.replace(/-/g, ' ')} has been received.`,
+        });
+        form.reset();
+    }
 
     return (
         <Card className="max-w-2xl mx-auto">
@@ -19,34 +64,79 @@ function ApplicationForm() {
                 <CardDescription>Please fill out the form below to apply.</CardDescription>
             </CardHeader>
             <CardContent>
-                <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="fullName">Full Name</Label>
-                            <Input id="fullName" placeholder="Enter your full name" />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="aadhaar">Aadhaar Number</Label>
-                            <Input id="aadhaar" placeholder="Enter your 12-digit Aadhaar number" />
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" type="tel" placeholder="Enter your 10-digit mobile number" />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="address">Full Address</Label>
-                        <Input id="address" placeholder="Enter your full address" />
-                    </div>
-                     <div className="space-y-2">
-                        <Label htmlFor="documents">Upload Documents</Label>
-                        <Input id="documents" type="file" />
-                         <p className="text-xs text-muted-foreground pt-1">
-                            Please upload relevant documents (e.g., ID proof, address proof).
-                        </p>
-                    </div>
-                    <Button type="submit" className="w-full">Submit Application</Button>
-                </form>
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <FormField
+                            control={form.control}
+                            name="fullName"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Full Name</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Enter your full name" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="village"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Village</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Enter your village name" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Phone Number</FormLabel>
+                                    <FormControl>
+                                        <Input type="tel" placeholder="Enter your 10-digit mobile number" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="aadhaar"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Aadhaar Number</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Enter your 12-digit Aadhaar number" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="document"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Upload Document</FormLabel>
+                                    <FormControl>
+                                        <Input type="file" accept={ACCEPTED_FILE_TYPES.join(',')} {...form.register('document')} />
+                                    </FormControl>
+                                    <FormDescription>
+                                        Upload ID proof, address proof, etc. (Max 2MB, PDF/Image).
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type="submit" className="w-full">Submit Application</Button>
+                    </form>
+                </Form>
             </CardContent>
         </Card>
     );
