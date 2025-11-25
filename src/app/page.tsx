@@ -14,6 +14,7 @@ import {
   BrainCircuit,
   ArrowRight,
   Mic,
+  FileText,
 } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
@@ -23,6 +24,12 @@ const features = [
     description: "Find local government and healthcare services.",
     href: "/services",
     icon: BookOpenCheck,
+  },
+  {
+    title: "Government Schemes",
+    description: "Find and apply for government schemes.",
+    href: "/schemes",
+    icon: FileText,
   },
   {
     title: "Digital Literacy",

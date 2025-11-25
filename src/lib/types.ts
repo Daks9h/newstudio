@@ -46,3 +46,10 @@ export type ChatMessage = {
   role: 'user' | 'assistant';
   content: string;
 };
+
+export type GovernmentScheme = {
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  applyLink: string;
+};

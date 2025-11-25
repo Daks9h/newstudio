@@ -24,6 +24,7 @@ import {
   LogOut,
   LogIn,
   Mic,
+  FileText,
 } from 'lucide-react';
 import { useAuth } from '@/firebase/provider';
 import {
@@ -41,6 +42,7 @@ import { ThemeToggle } from '../theme-toggle';
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/services', label: 'Service Directory', icon: BookOpenCheck },
+  { href: '/schemes', label: 'Government Schemes', icon: FileText },
   { href: '/resources', label: 'Digital Literacy', icon: GraduationCap },
   { href: '/progress', label: 'Progress Tracking', icon: LineChart },
   { href: '/forum', label: 'Community Forum', icon: MessagesSquare },
