@@ -200,23 +200,24 @@ export default function ProfilePage() {
             <Card>
                 <CardHeader>
                     <CardTitle>Course Statistics</CardTitle>
+                    <CardDescription>Your learning progress so far.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="flex justify-between items-center">
                         <span className="text-sm font-medium text-muted-foreground">Courses Completed</span>
                         <span className="font-bold text-lg">{completedCourses} / {totalCourses}</span>
                     </div>
-                    <ProgressUI value={completionPercentage} />
+                    <ProgressUI value={completionPercentage} aria-label={`${completionPercentage.toFixed(0)}% courses completed`} />
                     <div className="flex items-center justify-center text-sm text-muted-foreground pt-2">
                         <Award className="mr-2 h-4 w-4 text-primary" />
-                        You have completed {completedCourses} course{completedCourses !== 1 ? 's' : ''}!
+                        You've completed {completedCourses} out of {totalCourses} courses. Keep it up!
                     </div>
                 </CardContent>
             </Card>
         </div>
 
         {/* Right Column - Applications */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 space-y-6">
             <Card>
                 <CardHeader>
                     <CardTitle>My Submitted Applications</CardTitle>
@@ -256,8 +257,49 @@ export default function ProfilePage() {
                     )}
                 </CardContent>
             </Card>
+             <Card>
+                <CardHeader>
+                    <CardTitle>My Completed Courses</CardTitle>
+                    <CardDescription>A record of the courses you've successfully passed.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                     {progress.length > 0 ? (
+                        <div className="border rounded-lg">
+                            <Table>
+                                <TableHeader>
+                                <TableRow>
+                                    <TableHead>Course</TableHead>
+                                    <TableHead>Score</TableHead>
+                                    <TableHead className="text-right">Date</TableHead>
+                                </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                {progress.map((p) => (
+                                    <TableRow key={p.id}>
+                                    <TableCell className="font-medium">{p.course}</TableCell>
+                                    <TableCell>
+                                        <Badge variant={p.score >= 75 ? 'default' : 'secondary'}>{p.score}%</Badge>
+                                    </TableCell>
+                                    <TableCell className="text-right">
+                                        {p.completedAt?.seconds ? format(new Date(p.completedAt.seconds * 1000), 'PPP') : 'N/A'}
+                                    </TableCell>
+                                    </TableRow>
+                                ))}
+                                </TableBody>
+                            </Table>
+                        </div>
+                    ) : (
+                        <div className="text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
+                            <Award className="mx-auto h-8 w-8 mb-2" />
+                            You have not completed any courses yet.
+                        </div>
+                    )}
+                </CardContent>
+            </Card>
         </div>
       </div>
     </div>
   );
 }
+
+    
