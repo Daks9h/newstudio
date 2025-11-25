@@ -1,3 +1,5 @@
+'use client';
+
 import { AnalyticsCharts } from "@/components/analytics-charts";
 import type { AnalyticsStat } from "@/lib/types";
 import { Users, BookOpen, HandHelping, TrendingUp } from "lucide-react";
