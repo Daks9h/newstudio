@@ -52,8 +52,20 @@ export type GovernmentScheme = {
   name:string;
   description: string;
   icon: LucideIcon;
-  applyLink: string;
+  slug: string;
 };
+
+export type SchemeDetails = {
+    name: string;
+    slug: string;
+    icon: LucideIcon;
+    shortDescription: string;
+    longDescription: string;
+    eligibility: string[];
+    applicationProcess: string[];
+    documents: string[];
+    websiteUrl: string;
+}
 
 export type UserProfile = {
   uid: string;
@@ -98,4 +110,3 @@ export type ServiceRequestForm = {
   purpose: string;
   document: any;
 };
-
