@@ -177,7 +177,7 @@ export default function PDSPage() {
                     <p className="text-sm text-muted-foreground mb-4">
                         Use the "Mera Ration" app to locate fair price shops, check entitlements, and view transactions anywhere in the country.
                     </p>
-                    <a href="https://meration.nic.in/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://web.umang.gov.in/landing/department/mera-ration.html" target="_blank" rel="noopener noreferrer">
                         <Button className="w-full">
                             Visit Mera Ration Website <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
