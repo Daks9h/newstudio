@@ -64,9 +64,9 @@ const servicesData = [
       },
       {
         name: "Adult Literacy Program",
-        description: "Enroll in evening classes to improve reading and writing.",
+        description: "Enroll in free courses to improve digital skills and literacy.",
         icon: GraduationCap,
-        href: "/resources", // Assuming this links to the general resources page
+        href: "/resources",
       },
     ],
   },
@@ -119,5 +119,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-
-    
