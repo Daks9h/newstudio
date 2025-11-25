@@ -1,5 +1,249 @@
 {
   "entities": {
+    "Service": {
+      "title": "Service",
+      "description": "Represents a generic service provided by the platform.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the service."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the service."
+        },
+        "details": {
+          "type": "object",
+          "description": "Detailed information about the service."
+        },
+        "contactInfo": {
+          "type": "object",
+          "description": "Contact information for the service."
+        },
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "form",
+            "link",
+            "info"
+          ],
+          "description": "The type of action associated with the service."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "inactive"
+          ],
+          "description": "The current status of the service."
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the service was last updated."
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "actionType",
+        "status"
+      ]
+    },
+    "ServiceRequest": {
+      "title": "Service Request",
+      "description": "Represents a user's request for a specific service.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "serviceId": {
+          "type": "string"
+        },
+        "requestDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Pending",
+            "Approved",
+            "Rejected"
+          ]
+        },
+        "formData": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "userId",
+        "serviceId",
+        "requestDate",
+        "status"
+      ]
+    },
+    "LiteracyRegistration": {
+      "title": "Literacy Registration",
+      "description": "Represents a user's enrollment in the adult literacy program.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "registrationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Active",
+            "Completed"
+          ]
+        }
+      },
+      "required": [
+        "userId",
+        "registrationDate",
+        "status"
+      ]
+    },
+    "CourseEnrollment": {
+      "title": "Course Enrollment",
+      "description": "Represents a user's enrollment in a digital course.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "courseId": {
+          "type": "string"
+        },
+        "enrollmentDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "userId",
+        "courseId",
+        "enrollmentDate"
+      ]
+    },
+    "HealthAppointment": {
+      "title": "Health Appointment",
+      "description": "Represents a booking for a Primary Health Centre appointment.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "appointmentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Scheduled",
+            "Completed",
+            "Cancelled"
+          ]
+        }
+      },
+      "required": [
+        "userId",
+        "appointmentDate",
+        "status"
+      ]
+    },
+    "TelemedicineBooking": {
+      "title": "Telemedicine Booking",
+      "description": "Represents a booking for a remote consultation.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "bookingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "consultationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Scheduled",
+            "Completed",
+            "Cancelled"
+          ]
+        }
+      },
+      "required": [
+        "userId",
+        "bookingDate",
+        "consultationDate",
+        "status"
+      ]
+    },
+    "PDSComplaint": {
+      "title": "PDS Complaint",
+      "description": "Represents a complaint related to the Public Distribution System.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "complaintDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Open",
+            "Resolved",
+            "Closed"
+          ]
+        }
+      },
+      "required": [
+        "userId",
+        "complaintDate",
+        "description",
+        "status"
+      ]
+    },
+    "MobileUnitAlert": {
+      "title": "Mobile Unit Alert",
+      "description": "Represents a user's subscription to mobile medical unit alerts.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "subscriptionDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "userId",
+        "subscriptionDate"
+      ]
+    },
     "UserProfile": {
       "title": "User Profile",
       "description": "Represents a user's profile information.",
@@ -33,7 +277,10 @@
           "description": "The timestamp when the user profile was last updated."
         }
       },
-      "required": ["uid", "email"]
+      "required": [
+        "uid",
+        "email"
+      ]
     },
     "Application": {
       "title": "Application",
@@ -55,11 +302,20 @@
         },
         "status": {
           "type": "string",
-          "enum": ["Pending", "Approved", "Rejected"],
+          "enum": [
+            "Pending",
+            "Approved",
+            "Rejected"
+          ],
           "description": "The current status of the application."
         }
       },
-      "required": ["userId", "schemeName", "submissionDate", "status"]
+      "required": [
+        "userId",
+        "schemeName",
+        "submissionDate",
+        "status"
+      ]
     },
     "Progress": {
       "title": "Progress",
@@ -84,11 +340,18 @@
           "description": "The timestamp when the course was completed."
         }
       },
-      "required": ["userId", "course", "score", "completedAt"]
+      "required": [
+        "userId",
+        "course",
+        "score",
+        "completedAt"
+      ]
     }
   },
   "auth": {
-    "providers": ["password"]
+    "providers": [
+      "password"
+    ]
   },
   "firestore": {
     "/users/{userId}": {
@@ -108,6 +371,66 @@
         "$ref": "#/entities/Progress"
       },
       "description": "Stores user progress for courses."
+    },
+    "/educationServices/{serviceId}": {
+      "schema": {
+        "$ref": "#/entities/Service"
+      },
+      "description": "Stores details for education services."
+    },
+    "/governmentServices/{serviceId}": {
+      "schema": {
+        "$ref": "#/entities/Service"
+      },
+      "description": "Stores details for government services."
+    },
+    "/healthcareServices/{serviceId}": {
+      "schema": {
+        "$ref": "#/entities/Service"
+      },
+      "description": "Stores details for healthcare services."
+    },
+    "/serviceRequests/{requestId}": {
+      "schema": {
+        "$ref": "#/entities/ServiceRequest"
+      },
+      "description": "Stores all service requests from users."
+    },
+    "/literacyRegistrations/{registrationId}": {
+      "schema": {
+        "$ref": "#/entities/LiteracyRegistration"
+      },
+      "description": "Stores enrollments for the adult literacy program."
+    },
+    "/courseEnrollments/{enrollmentId}": {
+      "schema": {
+        "$ref": "#/entities/CourseEnrollment"
+      },
+      "description": "Stores enrollments for digital skills courses."
+    },
+    "/healthAppointments/{appointmentId}": {
+      "schema": {
+        "$ref": "#/entities/HealthAppointment"
+      },
+      "description": "Stores bookings for Primary Health Centre appointments."
+    },
+    "/telemedicineBookings/{bookingId}": {
+      "schema": {
+        "$ref": "#/entities/TelemedicineBooking"
+      },
+      "description": "Stores bookings for remote telemedicine consultations."
+    },
+    "/pdsComplaints/{complaintId}": {
+      "schema": {
+        "$ref": "#/entities/PDSComplaint"
+      },
+      "description": "Stores user complaints related to the Public Distribution System."
+    },
+    "/mobileUnitAlerts/{alertId}": {
+      "schema": {
+        "$ref": "#/entities/MobileUnitAlert"
+      },
+      "description": "Stores user subscriptions for mobile medical unit notifications."
     }
   }
 }
