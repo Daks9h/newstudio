@@ -8,6 +8,7 @@ import {
   serverTimestamp,
   type Firestore,
   updateDoc,
+  getDoc,
 } from 'firebase/firestore';
 import { errorEmitter } from '@/firebase/error-emitter';
 import {
@@ -15,6 +16,34 @@ import {
   type SecurityRuleContext,
 } from '@/firebase/errors';
 import type { UserProfile, PDSComplaint, ServiceRequestForm, Application, HealthAppointment, TelemedicineBooking, SchoolDetails } from '@/lib/types';
+
+// Initial data to seed if Firestore is empty
+const initialSchoolData: SchoolDetails = {
+  schoolName: 'Govt. Senior Secondary School',
+  address: 'Main Village Road, Rampur',
+  phone: '0123-456789',
+  email: 'contact@gss-rampur.edu',
+  principalName: 'Mrs. Sunita Sharma',
+  admissionCriteria:
+    'Admission is open for residents of Rampur and nearby villages. Required documents include previous marksheet, transfer certificate, Aadhaar card of the student and parents, and birth certificate. Admissions for the new session start from April 1st.',
+  academicCalendar: [
+    { event: 'New Session Begins', date: 'April 1, 2024' },
+    { event: 'Summer Vacation', date: 'May 15 - June 30, 2024' },
+    { event: 'Half-Yearly Exams', date: 'September 10 - 25, 2024' },
+    { event: 'Annual Sports Day', date: 'November 14, 2024' },
+    { event: 'Winter Break', date: 'December 24, 2024 - January 5, 2025' },
+    { event: 'Final Exams', date: 'March 5 - 20, 2025' },
+  ],
+  upcomingEvents: [
+    { event: 'Annual Day Function', date: 'August 15, 2024' },
+    { event: 'Parent-Teacher Meeting', date: 'August 28, 2024' },
+    {
+      event: 'Science Exhibition',
+      date: 'October 2, 2024',
+    },
+  ],
+};
+
 
 export function updateUserProfile(
   db: Firestore,
@@ -210,16 +239,24 @@ export function bookTelemedicineConsultation(
     });
 }
 
-export function setSchoolDetails(db: Firestore, data: SchoolDetails) {
+export async function setInitialSchoolDetails(db: Firestore) {
   const schoolRef = doc(db, 'educationServices', 'local-school');
-  return setDoc(schoolRef, data).catch(async (serverError) => {
-    const permissionError = new FirestorePermissionError({
-      path: schoolRef.path,
-      operation: 'create',
-      requestResourceData: data,
-    } satisfies SecurityRuleContext);
-    errorEmitter.emit('permission-error', permissionError);
-  });
+  
+  try {
+    const docSnap = await getDoc(schoolRef);
+    if (!docSnap.exists()) {
+      // If no data exists, seed it
+      await setDoc(schoolRef, initialSchoolData).catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+          path: schoolRef.path,
+          operation: 'create',
+          requestResourceData: initialSchoolData,
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+      });
+    }
+  } catch (error) {
+    console.error("Error checking or setting initial school details: ", error);
+  }
 }
-
     

@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFirebase } from '@/firebase/provider';
 import { getSchoolDetails } from '@/firebase/firestore/queries';
-import { setSchoolDetails } from '@/firebase/firestore/mutations';
 import {
   Card,
   CardContent,
@@ -29,33 +28,7 @@ import {
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import type { SchoolDetails } from '@/lib/types';
-
-// Initial data to seed if Firestore is empty
-const initialSchoolData: SchoolDetails = {
-  schoolName: 'Govt. Senior Secondary School',
-  address: 'Main Village Road, Rampur',
-  phone: '0123-456789',
-  email: 'contact@gss-rampur.edu',
-  principalName: 'Mrs. Sunita Sharma',
-  admissionCriteria:
-    'Admission is open for residents of Rampur and nearby villages. Required documents include previous marksheet, transfer certificate, Aadhaar card of the student and parents, and birth certificate. Admissions for the new session start from April 1st.',
-  academicCalendar: [
-    { event: 'New Session Begins', date: 'April 1, 2024' },
-    { event: 'Summer Vacation', date: 'May 15 - June 30, 2024' },
-    { event: 'Half-Yearly Exams', date: 'September 10 - 25, 2024' },
-    { event: 'Annual Sports Day', date: 'November 14, 2024' },
-    { event: 'Winter Break', date: 'December 24, 2024 - January 5, 2025' },
-    { event: 'Final Exams', date: 'March 5 - 20, 2025' },
-  ],
-  upcomingEvents: [
-    { event: 'Annual Day Function', date: 'August 15, 2024' },
-    { event: 'Parent-Teacher Meeting', date: 'August 28, 2024' },
-    {
-      event: 'Science Exhibition',
-      date: 'October 2, 2024',
-    },
-  ],
-};
+import { setInitialSchoolDetails } from '@/firebase/firestore/mutations';
 
 export default function LocalSchoolPage() {
   const router = useRouter();
@@ -67,12 +40,9 @@ export default function LocalSchoolPage() {
     async function fetchData() {
       if (!firestore) return;
       try {
-        let data = await getSchoolDetails(firestore);
-        if (!data) {
-          // If no data exists, seed it
-          await setSchoolDetails(firestore, initialSchoolData);
-          data = initialSchoolData;
-        }
+        // Ensure initial data exists before trying to fetch it.
+        await setInitialSchoolDetails(firestore);
+        const data = await getSchoolDetails(firestore);
         setSchoolData(data);
       } catch (error) {
         console.error('Error fetching school details:', error);
@@ -205,4 +175,3 @@ export default function LocalSchoolPage() {
   );
 }
 
-    
