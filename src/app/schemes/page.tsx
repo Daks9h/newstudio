@@ -5,68 +5,67 @@ import { Button } from "@/components/ui/button";
 import { Leaf, HeartPulse, Users, Home, Flame, Shield, Droplets, Banknote, School, Sprout } from "lucide-react";
 import type { GovernmentScheme } from "@/lib/types";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import Link from 'next/link';
 
 const schemesData: GovernmentScheme[] = [
   {
     name: "PM-KISAN",
     description: "Income support for all landholding farmer families.",
     icon: Leaf,
-    applyLink: "/application?scheme=PM-KISAN",
+    applyLink: "https://pmkisan.gov.in/",
   },
   {
     name: "Ayushman Bharat",
     description: "Health insurance coverage for vulnerable families.",
     icon: HeartPulse,
-    applyLink: "/application?scheme=Ayushman-Bharat",
+    applyLink: "https://pmjay.gov.in/",
   },
   {
     name: "MGNREGA",
     description: "Guaranteed 100 days of wage employment in a financial year.",
     icon: Users,
-    applyLink: "/application?scheme=MGNREGA",
+    applyLink: "https://nrega.nic.in/",
   },
   {
     name: "PM Awas Yojana",
     description: "Provides affordable housing to the urban and rural poor.",
     icon: Home,
-    applyLink: "/application?scheme=PM-Awas-Yojana",
+    applyLink: "https://pmayg.nic.in/netiay/home.aspx",
   },
   {
     name: "Ujjwala Yojana",
     description: "Provides clean cooking fuel (LPG) to women from BPL households.",
     icon: Flame,
-    applyLink: "/application?scheme=Ujjwala-Yojana",
+    applyLink: "https://www.pmuy.gov.in/",
   },
   {
     name: "PM Fasal Bima Yojana",
     description: "Crop insurance for farmers against yield losses.",
     icon: Shield,
-    applyLink: "/application?scheme=PM-Fasal-Bima-Yojana",
+    applyLink: "https://pmfby.gov.in/",
   },
    {
     name: "Jal Jeevan Mission",
     description: "Aims to provide safe and adequate drinking water through individual household tap connections.",
     icon: Droplets,
-    applyLink: "/application?scheme=Jal-Jeevan-Mission",
+    applyLink: "https://jaljeevanmission.gov.in/",
   },
   {
     name: "PM Jan Dhan Yojana",
     description: "National mission for financial inclusion to ensure access to financial services.",
     icon: Banknote,
-    applyLink: "/application?scheme=PM-Jan-Dhan-Yojana",
+    applyLink: "https://pmjdy.gov.in/",
   },
   {
     name: "Samagra Shiksha Abhiyan",
     description: "An integrated scheme for school education, extending from pre-school to senior secondary.",
     icon: School,
-    applyLink: "/application?scheme=Samagra-Shiksha-Abhiyan",
+    applyLink: "https://samagra.education.gov.in/",
   },
    {
     name: "National Food Security Mission",
     description: "Aims to increase the production of rice, wheat, pulses, and coarse cereals.",
     icon: Sprout,
-    applyLink: "/application?scheme=National-Food-Security-Mission",
+    applyLink: "https://www.nfsm.gov.in/",
   },
 ];
 
@@ -96,9 +95,9 @@ export default function SchemesPage() {
             </CardHeader>
             <CardContent className="flex-grow flex flex-col justify-between">
               <p className="text-sm text-muted-foreground mb-4">{scheme.description}</p>
-              <Link href={scheme.applyLink} passHref>
-                <Button className="w-full mt-auto">Apply Now</Button>
-              </Link>
+              <a href={scheme.applyLink} target="_blank" rel="noopener noreferrer" className="mt-auto">
+                <Button className="w-full">Apply Now</Button>
+              </a>
             </CardContent>
           </Card>
         ))}
