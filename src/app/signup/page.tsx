@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useAuth } from '@/firebase';
+import { useAuth } from '@/firebase/provider';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -43,7 +43,7 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Sign Up</CardTitle>
+          <CardTitle className="text-2xl">Sign Up</_CardTitle>
           <CardDescription>
             Enter your information to create an account
           </CardDescription>

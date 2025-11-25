@@ -5,7 +5,6 @@ import {
   type Auth,
 } from 'firebase/auth';
 import { getFirestore, type Firestore } from 'firebase/firestore';
-import { useAuth, useFirebase } from './provider';
 
 const firebaseConfig = {
   apiKey: 'YOUR_API_KEY',
@@ -31,5 +30,5 @@ function initializeFirebase(): {
   return { app, auth, firestore };
 }
 
-export { initializeFirebase, useAuth, useFirebase };
+export { initializeFirebase };
 export * from './provider';

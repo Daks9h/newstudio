@@ -1,4 +1,3 @@
-
 'use client';
 import React from 'react';
 import Link from 'next/link';
@@ -25,8 +24,7 @@ import {
   LogOut,
   LogIn,
 } from 'lucide-react';
-import { Toaster } from '@/components/ui/toaster';
-import { useAuth } from '@/firebase';
+import { useAuth } from '@/firebase/provider';
 import {
   DropdownMenu,
   DropdownMenuContent,
