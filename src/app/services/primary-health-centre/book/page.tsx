@@ -40,15 +40,15 @@ import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 
 const appointmentSchema = z.object({
-  patientName: z.string().min(1, 'Patient name is required.'),
-  age: z.coerce.number().min(1, 'Please enter a valid age.').max(120),
+  patientName: z.string().min(1, 'Patient name is required.').regex(/^[a-zA-Z\s]+$/, 'Only alphabetic characters are allowed'),
+  age: z.coerce.number().min(1, 'Please enter a valid age.').max(120, 'Age must be between 1 and 120'),
   phone: z
     .string()
     .regex(/^\d{10}$/, 'Please enter a valid 10-digit phone number.'),
   appointmentDate: z.date({
     required_error: 'A date for the appointment is required.',
-  }),
-  timeSlot: z.enum(['Morning', 'Afternoon']),
+  }).min(new Date(new Date().setDate(new Date().getDate() - 1)), 'Appointment date cannot be in the past.'),
+  timeSlot: z.enum(['Morning', 'Afternoon'], { required_error: 'Please select a time slot.'}),
   reason: z
     .string()
     .min(10, 'Please provide a brief reason (at least 10 characters).'),
@@ -64,7 +64,10 @@ export default function BookAppointmentPage() {
 
   const form = useForm<AppointmentFormValues>({
     resolver: zodResolver(appointmentSchema),
+    mode: 'onChange',
   });
+
+  const { formState } = form;
 
   function onSubmit(data: AppointmentFormValues) {
     if (!user || !firestore) {
@@ -76,11 +79,11 @@ export default function BookAppointmentPage() {
       return;
     }
     
-    bookHealthAppointment(firestore, { userId: user.uid, ...data });
+    const appointmentId = bookHealthAppointment(firestore, { userId: user.uid, ...data });
     
     toast({
       title: 'Appointment Booked Successfully!',
-      description: `Your appointment is scheduled for ${format(data.appointmentDate, 'PPP')} in the ${data.timeSlot}.`,
+      description: `Your appointment is scheduled for ${format(data.appointmentDate, 'PPP')} in the ${data.timeSlot}. Ref: ${appointmentId}`,
     });
     form.reset();
     router.push('/my-appointments');
@@ -236,7 +239,7 @@ export default function BookAppointmentPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={!formState.isValid}>
                 Confirm Appointment
               </Button>
             </form>

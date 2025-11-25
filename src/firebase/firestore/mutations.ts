@@ -9,6 +9,7 @@ import {
   type Firestore,
   updateDoc,
   getDoc,
+  DocumentReference,
 } from 'firebase/firestore';
 import { errorEmitter } from '@/firebase/error-emitter';
 import {
@@ -127,7 +128,9 @@ export function saveServiceRequest(
     // We are only saving the form data.
     const { document, ...dataToSave } = newRequest;
 
-    addDoc(requestCollection, dataToSave)
+    const docRef = doc(requestCollection);
+
+    setDoc(docRef, dataToSave)
     .catch(async (serverError) => {
         const permissionError = new FirestorePermissionError({
             path: requestCollection.path,
@@ -136,6 +139,8 @@ export function saveServiceRequest(
         } satisfies SecurityRuleContext);
         errorEmitter.emit('permission-error', permissionError);
     });
+
+    return docRef.id;
 }
 
 export function saveApplication(
@@ -172,8 +177,10 @@ export function bookHealthAppointment(
         status: 'Scheduled',
         createdAt: serverTimestamp(),
     };
+    
+    const docRef = doc(appointmentCollection);
 
-    addDoc(appointmentCollection, newAppointment)
+    setDoc(docRef, newAppointment)
     .catch(async (serverError) => {
         const permissionError = new FirestorePermissionError({
             path: appointmentCollection.path,
@@ -182,6 +189,8 @@ export function bookHealthAppointment(
         } satisfies SecurityRuleContext);
         errorEmitter.emit('permission-error', permissionError);
     });
+
+    return docRef.id;
 }
 
 export function cancelHealthAppointment(db: Firestore, appointmentId: string) {
@@ -227,8 +236,10 @@ export function bookTelemedicineConsultation(
         status: 'Scheduled',
         createdAt: serverTimestamp(),
     };
+    
+    const docRef = doc(bookingCollection);
 
-    addDoc(bookingCollection, newBooking)
+    setDoc(docRef, newBooking)
     .catch(async (serverError) => {
         const permissionError = new FirestorePermissionError({
             path: bookingCollection.path,
@@ -237,6 +248,8 @@ export function bookTelemedicineConsultation(
         } satisfies SecurityRuleContext);
         errorEmitter.emit('permission-error', permissionError);
     });
+
+    return docRef.id;
 }
 
 export async function setInitialSchoolDetails(db: Firestore) {
@@ -259,4 +272,3 @@ export async function setInitialSchoolDetails(db: Firestore) {
     console.error("Error checking or setting initial school details: ", error);
   }
 }
-    

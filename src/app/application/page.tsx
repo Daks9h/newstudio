@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Suspense } from 'react';
@@ -19,7 +20,7 @@ const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 const ACCEPTED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'];
 
 const applicationSchema = z.object({
-  fullName: z.string().min(1, 'Full name is required'),
+  fullName: z.string().min(1, 'Full name is required').regex(/^[a-zA-Z\s]+$/, 'Only alphabetic characters are allowed'),
   village: z.string().min(1, 'Village is required'),
   phone: z.string().regex(/^\d{10}$/, 'Please enter a valid 10-digit phone number'),
   aadhaar: z.string().regex(/^\d{12}$/, 'Please enter a valid 12-digit Aadhaar number'),
@@ -46,6 +47,7 @@ function ApplicationForm() {
 
     const form = useForm<ApplicationFormValues>({
         resolver: zodResolver(applicationSchema),
+        mode: 'onChange',
         defaultValues: {
             fullName: '',
             village: '',
@@ -54,6 +56,8 @@ function ApplicationForm() {
             document: undefined,
         },
     });
+
+    const { formState } = form;
 
     function onSubmit(data: ApplicationFormValues) {
         if (!user || !firestore) {
@@ -159,7 +163,7 @@ function ApplicationForm() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full">Submit Application</Button>
+                        <Button type="submit" className="w-full" disabled={!formState.isValid}>Submit Application</Button>
                     </form>
                 </Form>
             </CardContent>

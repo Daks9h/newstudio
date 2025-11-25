@@ -17,7 +17,7 @@ import { ArrowLeft } from 'lucide-react';
 import type { PDSComplaint } from '@/lib/types';
 
 const complaintSchema = z.object({
-  rationCardNumber: z.string().min(10, 'Please enter a valid ration card number.'),
+  rationCardNumber: z.string().regex(/^[a-zA-Z0-9]{10,20}$/, 'Please enter a valid 10-20 digit alphanumeric ration card number.'),
   shopName: z.string().min(1, 'Fair price shop name is required.'),
   description: z.string().min(20, 'Please provide a detailed description of at least 20 characters.'),
 });
@@ -32,12 +32,15 @@ export default function PDSComplaintPage() {
 
   const form = useForm<ComplaintFormValues>({
     resolver: zodResolver(complaintSchema),
+    mode: 'onChange',
     defaultValues: {
       rationCardNumber: '',
       shopName: '',
       description: '',
     },
   });
+
+  const { formState } = form;
 
   function onSubmit(data: ComplaintFormValues) {
     if (!user || !firestore) {
@@ -58,7 +61,7 @@ export default function PDSComplaintPage() {
 
     toast({
       title: 'Complaint Registered!',
-      description: 'Your complaint has been submitted. You will be notified of any updates.',
+      description: 'Your complaint has been submitted. You will be notified of any updates. Ref: ' + Date.now(),
     });
     form.reset();
     router.push('/pds');
@@ -88,7 +91,7 @@ export default function PDSComplaintPage() {
                   <FormItem>
                     <FormLabel>Your Ration Card Number</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your 10-digit ration card number" {...field} />
+                      <Input placeholder="Enter your alphanumeric ration card number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -124,7 +127,7 @@ export default function PDSComplaintPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">Submit Complaint</Button>
+              <Button type="submit" className="w-full" disabled={!formState.isValid}>Submit Complaint</Button>
             </form>
           </Form>
         </CardContent>

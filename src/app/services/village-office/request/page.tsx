@@ -57,7 +57,7 @@ const villageServices: Pick<VillageService, 'name' | 'processingTime'>[] = [
 
 const requestSchema = z.object({
   serviceType: z.string({ required_error: 'Please select a service.' }),
-  applicantName: z.string().min(1, 'Applicant name is required.'),
+  applicantName: z.string().min(1, 'Applicant name is required.').regex(/^[a-zA-Z\s]+$/, 'Only alphabetic characters are allowed'),
   phone: z
     .string()
     .regex(/^\d{10}$/, 'Please enter a valid 10-digit phone number.'),
@@ -74,8 +74,7 @@ const requestSchema = z.object({
     .refine(
       (files) => ACCEPTED_FILE_TYPES.includes(files?.[0]?.type),
       '.jpg, .jpeg, .png, and .pdf files are accepted.'
-    )
-    .optional(),
+    ),
 });
 
 export default function ServiceRequestPage() {
@@ -86,7 +85,10 @@ export default function ServiceRequestPage() {
 
   const form = useForm<ServiceRequestForm>({
     resolver: zodResolver(requestSchema),
+    mode: 'onChange',
   });
+
+  const { formState } = form;
 
   function onSubmit(data: ServiceRequestForm) {
     if (!user || !firestore) {
@@ -98,13 +100,13 @@ export default function ServiceRequestPage() {
       return;
     }
 
-    saveServiceRequest(firestore, user.uid, data);
+    const requestId = saveServiceRequest(firestore, user.uid, data);
 
     const selectedService = villageServices.find(s => s.name === data.serviceType);
     
     toast({
       title: 'Service Request Submitted!',
-      description: `Your request for a ${data.serviceType} has been received. Estimated processing time: ${selectedService?.processingTime}.`,
+      description: `Your request for a ${data.serviceType} has been received. Est. time: ${selectedService?.processingTime}. Ref: ${requestId}`,
     });
     form.reset();
     router.push('/services/village-office');
@@ -234,7 +236,7 @@ export default function ServiceRequestPage() {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={!formState.isValid}>
                 Submit Request
               </Button>
             </form>

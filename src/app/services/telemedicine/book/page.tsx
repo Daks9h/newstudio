@@ -40,14 +40,14 @@ import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 
 const consultationSchema = z.object({
-  patientName: z.string().min(1, 'Patient name is required.'),
-  age: z.coerce.number().min(1, 'Please enter a valid age.').max(120),
+  patientName: z.string().min(1, 'Patient name is required.').regex(/^[a-zA-Z\s]+$/, 'Only alphabetic characters are allowed'),
+  age: z.coerce.number().min(1, 'Please enter a valid age.').max(120, 'Age must be between 1 and 120'),
   phone: z.string().regex(/^\d{10}$/, 'Please enter a valid 10-digit phone number.'),
   consultationDate: z.date({
     required_error: 'A date for the consultation is required.',
-  }),
-  timeSlot: z.enum(['Morning', 'Evening']),
-  consultationType: z.enum(['Video', 'Phone']),
+  }).min(new Date(new Date().setDate(new Date().getDate() - 1)), 'Consultation date cannot be in the past.'),
+  timeSlot: z.enum(['Morning', 'Evening'], { required_error: 'Please select a time slot.'}),
+  consultationType: z.enum(['Video', 'Phone'], { required_error: 'Please select a consultation type.'}),
   healthIssue: z.string().min(20, 'Please describe your health issue in at least 20 characters.'),
 });
 
@@ -61,7 +61,10 @@ export default function BookTelemedicinePage() {
 
   const form = useForm<ConsultationFormValues>({
     resolver: zodResolver(consultationSchema),
+    mode: 'onChange',
   });
+
+  const { formState } = form;
 
   function onSubmit(data: ConsultationFormValues) {
     if (!user || !firestore) {
@@ -73,11 +76,11 @@ export default function BookTelemedicinePage() {
       return;
     }
     
-    bookTelemedicineConsultation(firestore, { userId: user.uid, ...data });
+    const bookingId = bookTelemedicineConsultation(firestore, { userId: user.uid, ...data });
     
     toast({
       title: 'Consultation Booked Successfully!',
-      description: `Dr. Sharma will connect with you via ${data.consultationType} call on ${format(data.consultationDate, 'PPP')} in the ${data.timeSlot}.`,
+      description: `Dr. Sharma will connect via ${data.consultationType} on ${format(data.consultationDate, 'PPP')} in the ${data.timeSlot}. Ref: ${bookingId}`,
     });
     form.reset();
     // In a real app, you might redirect to a 'my-consultations' page.
@@ -252,7 +255,7 @@ export default function BookTelemedicinePage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={!formState.isValid}>
                 Confirm Consultation
               </Button>
             </form>
