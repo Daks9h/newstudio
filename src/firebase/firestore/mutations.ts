@@ -14,7 +14,7 @@ import {
   FirestorePermissionError,
   type SecurityRuleContext,
 } from '@/firebase/errors';
-import type { UserProfile, PDSComplaint, ServiceRequestForm, Application, HealthAppointment, TelemedicineBooking } from '@/lib/types';
+import type { UserProfile, PDSComplaint, ServiceRequestForm, Application, HealthAppointment, TelemedicineBooking, SchoolDetails } from '@/lib/types';
 
 export function updateUserProfile(
   db: Firestore,
@@ -209,3 +209,17 @@ export function bookTelemedicineConsultation(
         errorEmitter.emit('permission-error', permissionError);
     });
 }
+
+export function setSchoolDetails(db: Firestore, data: SchoolDetails) {
+  const schoolRef = doc(db, 'educationServices', 'local-school');
+  return setDoc(schoolRef, data).catch(async (serverError) => {
+    const permissionError = new FirestorePermissionError({
+      path: schoolRef.path,
+      operation: 'create',
+      requestResourceData: data,
+    } satisfies SecurityRuleContext);
+    errorEmitter.emit('permission-error', permissionError);
+  });
+}
+
+    

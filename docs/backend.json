@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "Service": {
@@ -42,6 +43,44 @@
           "type": "string",
           "format": "date-time",
           "description": "The timestamp when the service was last updated."
+        },
+        "schoolName": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "principalName": {
+            "type": "string"
+        },
+        "admissionCriteria": {
+            "type": "string"
+        },
+        "academicCalendar": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "event": { "type": "string" },
+                    "date": { "type": "string" }
+                }
+            }
+        },
+        "upcomingEvents": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "event": { "type": "string" },
+                    "date": { "type": "string" }
+                }
+            }
         }
       },
       "required": [
@@ -376,7 +415,7 @@
       "schema": {
         "$ref": "#/entities/Service"
       },
-      "description": "Stores details for education services."
+      "description": "Stores details for education services. The document ID 'local-school' contains details for the local school."
     },
     "/governmentServices/{serviceId}": {
       "schema": {
@@ -434,3 +473,5 @@
     }
   }
 }
+
+    

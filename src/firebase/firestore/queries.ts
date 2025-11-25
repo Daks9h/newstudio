@@ -7,8 +7,10 @@ import {
   getDocs,
   type Firestore,
   orderBy,
+  doc,
+  getDoc,
 } from 'firebase/firestore';
-import type { Application, Progress, HealthAppointment } from '@/lib/types';
+import type { Application, Progress, HealthAppointment, SchoolDetails } from '@/lib/types';
 
 export async function getUserApplications(
   db: Firestore,
@@ -52,3 +54,16 @@ export async function getUserHealthAppointments(db: Firestore, userId: string): 
     });
     return appointments;
 }
+
+export async function getSchoolDetails(db: Firestore): Promise<SchoolDetails | null> {
+    const docRef = doc(db, 'educationServices', 'local-school');
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data() as SchoolDetails;
+    } else {
+        return null;
+    }
+}
+
+    

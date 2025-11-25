@@ -166,3 +166,16 @@ export type TelemedicineBooking = {
     status: 'Scheduled' | 'Completed' | 'Cancelled';
     createdAt: any;
 };
+
+export type SchoolDetails = {
+    schoolName: string;
+    address: string;
+    phone: string;
+    email: string;
+    principalName: string;
+    admissionCriteria: string;
+    academicCalendar: { event: string; date: string }[];
+    upcomingEvents: { event: string; date: string }[];
+}
+
+    
