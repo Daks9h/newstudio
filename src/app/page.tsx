@@ -11,7 +11,6 @@ import {
   LineChart,
   MessagesSquare,
   BarChart3,
-  BrainCircuit,
   ArrowRight,
   Mic,
   FileText,
@@ -54,12 +53,6 @@ const features = [
     description: "View platform usage and impact analytics.",
     href: "/analytics",
     icon: BarChart3,
-  },
-  {
-    title: "Regional Insights",
-    description: "Generate content suggestions for your locale.",
-    href: "/regional-insights",
-    icon: BrainCircuit,
   },
   {
     title: "Chat Assistant",

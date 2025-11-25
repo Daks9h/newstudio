@@ -15,7 +15,6 @@ import {
 import {
   BarChart3,
   BookOpenCheck,
-  BrainCircuit,
   GraduationCap,
   LayoutDashboard,
   LineChart,
@@ -48,7 +47,6 @@ const navItems = [
   { href: '/progress', label: 'Progress Tracking', icon: LineChart },
   { href: '/forum', label: 'Community Forum', icon: MessagesSquare },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },
-  { href: '/regional-insights', label: 'Regional Insights', icon: BrainCircuit },
   { href: '/chat', label: 'Chat Assistant', icon: Mic },
 ];
 
