@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth, useFirebase } from '@/firebase/provider';
 import { getUserHealthAppointments } from '@/firebase/firestore/queries';
 import { cancelHealthAppointment } from '@/firebase/firestore/mutations';
@@ -24,7 +25,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, CalendarX2, X } from 'lucide-react';
+import { Loader2, CalendarX2, X, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
 import {
   AlertDialog,
@@ -37,11 +38,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { SidebarTrigger } from '@/components/ui/sidebar';
 
 export default function MyAppointmentsPage() {
   const { user } = useAuth();
   const { firestore } = useFirebase() as any;
   const { toast } = useToast();
+  const router = useRouter();
   const [appointments, setAppointments] = useState<HealthAppointment[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -97,9 +100,20 @@ export default function MyAppointmentsPage() {
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-      <h1 className="text-3xl font-bold tracking-tight font-headline">
-        My Appointments
-      </h1>
+      <div className="flex items-center justify-between space-y-2">
+        <div className="flex items-center gap-4">
+            <Button variant="outline" size="icon" onClick={() => router.back()}>
+                <ArrowLeft className="h-4 w-4" />
+                <span className="sr-only">Go back</span>
+            </Button>
+            <h1 className="text-3xl font-bold tracking-tight font-headline">
+                My Appointments
+            </h1>
+        </div>
+        <div className="md:hidden">
+          <SidebarTrigger />
+        </div>
+      </div>
       <p className="text-muted-foreground">
         View and manage your health appointments.
       </p>
