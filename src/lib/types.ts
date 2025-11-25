@@ -67,10 +67,12 @@ export type SchemeDetails = {
 }
 
 export type UserProfile = {
-  uid: string;
+  uid?: string;
   name: string;
   email: string;
   village: string;
+  createdAt?: any;
+  updatedAt?: any;
 };
 
 export type Application = {
