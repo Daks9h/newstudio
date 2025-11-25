@@ -131,3 +131,16 @@ export type Progress = {
   score: number;
   completedAt: any;
 };
+
+export type HealthAppointment = {
+    id?: string;
+    userId: string;
+    patientName: string;
+    age: number;
+    phone: string;
+    appointmentDate: any;
+    timeSlot: 'Morning' | 'Afternoon';
+    reason: string;
+    status: 'Scheduled' | 'Completed' | 'Cancelled';
+    createdAt: any;
+};

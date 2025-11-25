@@ -7,13 +7,14 @@ import {
   collection,
   serverTimestamp,
   type Firestore,
+  updateDoc,
 } from 'firebase/firestore';
 import { errorEmitter } from '@/firebase/error-emitter';
 import {
   FirestorePermissionError,
   type SecurityRuleContext,
 } from '@/firebase/errors';
-import type { UserProfile, PDSComplaint, ServiceRequestForm, Application } from '@/lib/types';
+import type { UserProfile, PDSComplaint, ServiceRequestForm, Application, HealthAppointment } from '@/lib/types';
 
 export function updateUserProfile(
   db: Firestore,
@@ -114,7 +115,7 @@ export function saveApplication(
   schemeName: string
 ) {
   const appCollection = collection(db, 'applications');
-  const newApplication: Application = {
+  const newApplication: Omit<Application, 'id'> = {
     userId,
     schemeName,
     submissionDate: serverTimestamp(),
@@ -130,4 +131,39 @@ export function saveApplication(
       } satisfies SecurityRuleContext);
       errorEmitter.emit('permission-error', permissionError);
   });
+}
+
+export function bookHealthAppointment(
+    db: Firestore,
+    appointment: Omit<HealthAppointment, 'id' | 'status' | 'createdAt'>
+) {
+    const appointmentCollection = collection(db, 'healthAppointments');
+    const newAppointment = {
+        ...appointment,
+        status: 'Scheduled',
+        createdAt: serverTimestamp(),
+    };
+
+    addDoc(appointmentCollection, newAppointment)
+    .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+            path: appointmentCollection.path,
+            operation: 'create',
+            requestResourceData: newAppointment,
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+    });
+}
+
+export function cancelHealthAppointment(db: Firestore, appointmentId: string) {
+    const appointmentRef = doc(db, 'healthAppointments', appointmentId);
+    updateDoc(appointmentRef, { status: 'Cancelled' })
+    .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+            path: appointmentRef.path,
+            operation: 'update',
+            requestResourceData: { status: 'Cancelled' },
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+    });
 }

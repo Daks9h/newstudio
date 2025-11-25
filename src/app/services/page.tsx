@@ -36,7 +36,7 @@ const servicesData: Service[] = [
         name: "Primary Health Centre",
         description: "OPD, immunizations, and basic health check-ups.",
         icon: HeartPulse,
-        href: "#",
+        href: "/services/primary-health-centre",
       },
       {
         name: "Mobile Medical Unit",

@@ -25,6 +25,7 @@ import {
   FileText,
   User,
   Archive,
+  HeartPulse,
 } from 'lucide-react';
 import { useAuth } from '@/firebase/provider';
 import {
@@ -101,6 +102,12 @@ function UserMenu() {
           <Link href="/my-applications">
             <Archive className="mr-2 h-4 w-4" />
             <span>My Applications</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/my-appointments">
+            <HeartPulse className="mr-2 h-4 w-4" />
+            <span>My Appointments</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />

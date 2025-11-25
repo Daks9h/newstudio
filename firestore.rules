@@ -43,5 +43,15 @@ service cloud.firestore {
       allow read: if request.auth != null && resource.data.userId == request.auth.uid;
       allow update, delete: if false;
     }
+    
+    // HEALTH APPOINTMENTS
+    // Users can create their own appointments.
+    // Users can read and update (cancel) their own appointments.
+    match /healthAppointments/{appointmentId} {
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow read: if isOwner(resource.data.userId);
+      allow update: if isOwner(resource.data.userId) && request.resource.data.status == 'Cancelled';
+      allow delete: if false;
+    }
   }
 }
