@@ -46,6 +46,14 @@ const resourcesData: Resource[] = [
 ];
 
 export default function ResourcesPage() {
+  const getLinkForResource = (resource: Resource) => {
+    const searchTerm = encodeURIComponent(resource.title);
+    if (resource.type === 'Video') {
+      return `https://www.youtube.com/results?search_query=${searchTerm}`;
+    }
+    return `https://www.google.com/search?q=${searchTerm}`;
+  };
+  
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
@@ -59,7 +67,7 @@ export default function ResourcesPage() {
       </p>
       <div className="grid gap-6 pt-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {resourcesData.map((resource) => (
-          <Link key={resource.id} href={resource.youtubeLink} target="_blank" rel="noopener noreferrer" className="block">
+          <Link key={resource.id} href={getLinkForResource(resource)} target="_blank" rel="noopener noreferrer" className="block">
             <Card className="overflow-hidden transition-all hover:shadow-lg h-full">
               <CardHeader className="p-0">
                 <Image
