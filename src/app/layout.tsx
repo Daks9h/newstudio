@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { AppLayout } from '@/components/layout/app-layout';
 import { Toaster } from "@/components/ui/toaster"
+import { FirebaseProvider } from '@/firebase';
 
 export const metadata: Metadata = {
   title: 'Digital सखी',
@@ -24,7 +25,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <AppLayout>{children}</AppLayout>
+        <FirebaseProvider>
+          <AppLayout>{children}</AppLayout>
+        </FirebaseProvider>
         <Toaster />
       </body>
     </html>

@@ -12,7 +12,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {
   BarChart3,
@@ -23,8 +22,21 @@ import {
   Leaf,
   LineChart,
   MessagesSquare,
+  LogOut,
+  LogIn,
 } from 'lucide-react';
 import { Toaster } from '@/components/ui/toaster';
+import { useAuth } from '@/firebase';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Button } from '../ui/button';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -36,19 +48,71 @@ const navItems = [
   { href: '/regional-insights', label: 'Regional Insights', icon: BrainCircuit },
 ];
 
+function UserMenu() {
+  const { user, logout } = useAuth();
+  if (!user) {
+    return (
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/login">
+          <LogIn className="mr-2 h-4 w-4" />
+          Login
+        </Link>
+      </Button>
+    );
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+          <Avatar className="h-8 w-8">
+            <AvatarImage
+              src={user.photoURL ?? undefined}
+              alt={user.displayName ?? 'User'}
+            />
+            <AvatarFallback>
+              {user.email?.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56" align="end" forceMount>
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">
+              {user.displayName}
+            </p>
+            <p className="text-xs leading-none text-muted-foreground">
+              {user.email}
+            </p>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => logout()}>
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Log out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
     <SidebarProvider>
       <Sidebar side="left" variant="sidebar" collapsible="icon">
-        <SidebarHeader className="items-center justify-center p-4 group-data-[collapsible=icon]:justify-center">
-            <Link href="/" className="flex items-center gap-2">
-                <Leaf className="w-8 h-8 text-primary" />
-                <span className="text-lg font-bold font-headline group-data-[collapsible=icon]:hidden">
-                    Digital सखी
-                </span>
-            </Link>
+        <SidebarHeader className="items-center justify-between p-4 group-data-[collapsible=icon]:justify-center">
+          <Link href="/" className="flex items-center gap-2">
+            <Leaf className="h-8 w-8 text-primary" />
+            <span className="text-lg font-bold font-headline group-data-[collapsible=icon]:hidden">
+              Digital सखी
+            </span>
+          </Link>
+          <div className="group-data-[collapsible=icon]:hidden">
+            <UserMenu />
+          </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
