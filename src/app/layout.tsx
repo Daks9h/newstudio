@@ -4,7 +4,7 @@ import { AppLayout } from '@/components/layout/app-layout';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Digital Sakhi',
+  title: 'Digital सखी',
   description: 'A centralized digital hub for rural communities.',
 };
 
