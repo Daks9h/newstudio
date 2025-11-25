@@ -28,7 +28,7 @@ const villageServices: VillageService[] = [
     name: 'Land Records (Pahani/ROR)',
     documents: ['Aadhaar Card', 'Old Land Deed (if any)'],
     processingTime: '7-15 days',
-    fees: '₹50',
+    fees: 'Rs. 50',
   },
   {
     name: 'Birth Certificate',
@@ -37,13 +37,13 @@ const villageServices: VillageService[] = [
       'Parents Aadhaar Cards',
     ],
     processingTime: '5-7 days',
-    fees: '₹20',
+    fees: 'Rs. 20',
   },
   {
     name: 'Death Certificate',
     documents: ['Hospital Death Summary/Cremation Report', 'Deceased\'s ID Proof'],
     processingTime: '5-7 days',
-    fees: '₹20',
+    fees: 'Rs. 20',
   },
   {
     name: 'Caste Certificate',
@@ -53,7 +53,7 @@ const villageServices: VillageService[] = [
       'Ration Card',
     ],
     processingTime: '15-21 days',
-    fees: '₹30',
+    fees: 'Rs. 30',
   },
   {
     name: 'Income Certificate',
@@ -63,7 +63,7 @@ const villageServices: VillageService[] = [
       'Salary Slip or Income Proof from Panchayat',
     ],
     processingTime: '7-10 days',
-    fees: '₹25',
+    fees: 'Rs. 25',
   },
   {
     name: 'Local Permits (e.g., small construction)',
@@ -83,7 +83,7 @@ const villageServices: VillageService[] = [
       'Supporting documents as per requirement',
     ],
     processingTime: '10-15 days',
-    fees: '₹100',
+    fees: 'Rs. 100',
   },
 ];
 
