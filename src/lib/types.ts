@@ -30,11 +30,6 @@ export type ForumPost = {
   timestamp: string;
 };
 
-export type ProgressData = {
-  month: string;
-  completed: number;
-};
-
 export type AnalyticsStat = {
   name: string;
   value: string;
@@ -127,4 +122,12 @@ export type Course = {
   lessons: CourseLesson[];
   quiz: QuizQuestion[];
   icon: LucideIcon;
+};
+
+export type Progress = {
+  id?: string;
+  userId: string;
+  course: string;
+  score: number;
+  completedAt: any;
 };
