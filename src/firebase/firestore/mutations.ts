@@ -13,7 +13,7 @@ import {
   FirestorePermissionError,
   type SecurityRuleContext,
 } from '@/firebase/errors';
-import type { UserProfile, PDSComplaint } from '@/lib/types';
+import type { UserProfile, PDSComplaint, ServiceRequestForm } from '@/lib/types';
 
 export function updateUserProfile(
   db: Firestore,
@@ -76,6 +76,33 @@ export function savePDSComplaint(
             path: complaintCollection.path,
             operation: 'create',
             requestResourceData: newComplaint,
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+    });
+}
+
+export function saveServiceRequest(
+    db: Firestore,
+    userId: string,
+    formData: ServiceRequestForm
+) {
+    const requestCollection = collection(db, 'serviceRequests');
+    const newRequest = {
+        userId,
+        ...formData,
+        requestDate: serverTimestamp(),
+        status: 'Pending',
+    };
+    // Note: Document upload would require Firebase Storage, which is not implemented here.
+    // We are only saving the form data.
+    const { document, ...dataToSave } = newRequest;
+
+    addDoc(requestCollection, dataToSave)
+    .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+            path: requestCollection.path,
+            operation: 'create',
+            requestResourceData: dataToSave,
         } satisfies SecurityRuleContext);
         errorEmitter.emit('permission-error', permissionError);
     });

@@ -13,7 +13,7 @@ const servicesData: Service[] = [
         name: "Village Office",
         description: "Land records, birth/death certificates, and local permits.",
         icon: Landmark,
-        href: "#",
+        href: "/services/village-office",
       },
       {
         name: "Public Distribution",

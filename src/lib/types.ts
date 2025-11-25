@@ -83,3 +83,19 @@ export type PDSComplaint = {
   status: 'Open' | 'Resolved' | 'Closed';
   complaintDate: any;
 };
+
+export type VillageService = {
+  name: string;
+  documents: string[];
+  processingTime: string;
+  fees: string;
+};
+
+export type ServiceRequestForm = {
+  serviceType: string;
+  applicantName: string;
+  phone: string;
+  purpose: string;
+  document: any;
+};
+
