@@ -91,26 +91,26 @@ export default function ServicesPage() {
             <h2 className="text-2xl font-semibold tracking-tight mb-4 font-headline">{group.category}</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {group.services.map((service) => (
-                <Card key={service.name} className="flex flex-col">
-                  <CardHeader className="flex-grow">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-primary/10 rounded-full">
-                         <service.icon className="h-6 w-6 text-primary" />
+                <Link href={service.href || '#'} key={service.name} className="group block">
+                  <Card className="h-full transition-all duration-300 ease-in-out hover:shadow-lg hover:border-primary/50 flex flex-col">
+                    <CardHeader className="flex-grow">
+                      <div className="flex items-start gap-4">
+                        <div className="p-3 bg-primary/10 rounded-full">
+                           <service.icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                            <CardTitle className="text-lg">{service.name}</CardTitle>
+                            <p className="text-sm text-muted-foreground mt-2">{service.description}</p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                          <CardTitle className="text-lg">{service.name}</CardTitle>
-                          <p className="text-sm text-muted-foreground mt-2">{service.description}</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardFooter>
-                    <Link href={service.href || '#'} className="w-full">
-                       <Button variant="outline" className="w-full">
+                    </CardHeader>
+                    <CardFooter className="opacity-0 group-hover:opacity-100 transition-opacity">
+                       <Button variant="outline" className="w-full" tabIndex={-1}>
                          View Details <ArrowRight className="ml-2 h-4 w-4" />
                        </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
+                    </CardFooter>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
