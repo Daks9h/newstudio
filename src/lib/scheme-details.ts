@@ -8,7 +8,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     slug: "pm-kisan",
     icon: Leaf,
     category: "Agriculture",
-    shortDescription: "Income support of ₹6,000 per year for all landholding farmer families.",
+    shortDescription: "Income support of Rs. 6,000 per year for all landholding farmer families.",
     longDescription: "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN) is a central sector scheme with 100% funding from Government of India. It has become operational from 1.12.2018. Under the scheme an income support of 6,000/- per year in three equal installments will be provided to all land holding farmer families.",
     eligibility: [
       "Must be an Indian citizen.",
@@ -32,8 +32,8 @@ export const allSchemeDetails: SchemeDetails[] = [
     slug: "ayushman-bharat",
     icon: HeartPulse,
     category: "Healthcare",
-    shortDescription: "Health insurance coverage up to ₹5 lakh per family per year.",
-    longDescription: "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY) is a national public health insurance fund of the Government of India that aims to provide free access to health insurance coverage for low income earners in the country. It provides a cover of ₹5 lakh per family per year for secondary and tertiary care hospitalization.",
+    shortDescription: "Health insurance coverage up to Rs. 5 lakh per family per year.",
+    longDescription: "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY) is a national public health insurance fund of the Government of India that aims to provide free access to health insurance coverage for low income earners in the country. It provides a cover of Rs. 5 lakh per family per year for secondary and tertiary care hospitalization.",
     eligibility: [
       "Families must be listed in the Socio-Economic Caste Census (SECC) 2011 data.",
       "There is no cap on family size or age of members.",
@@ -146,7 +146,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     icon: IndianRupee,
     category: "Social Welfare",
     shortDescription: "A pension scheme for citizens in the unorganized sector, providing a fixed monthly pension.",
-    longDescription: "Atal Pension Yojana (APY) is a government-backed pension scheme in India, targeted at the unorganized sector. Subscribers receive a fixed monthly pension of ₹1,000 to ₹5,000 after the age of 60, depending on their contributions.",
+    longDescription: "Atal Pension Yojana (APY) is a government-backed pension scheme in India, targeted at the unorganized sector. Subscribers receive a fixed monthly pension of Rs. 1,000 to Rs. 5,000 after the age of 60, depending on their contributions.",
     eligibility: [
         "Must be an Indian citizen.",
         "Age must be between 18 and 40 years.",
@@ -157,7 +157,7 @@ export const allSchemeDetails: SchemeDetails[] = [
         "Approach your bank or post office branch where you hold a savings account.",
         "Ask for the APY registration form.",
         "Fill the form with your account number, Aadhaar number, and mobile number.",
-        "Specify the pension amount you want to receive (₹1,000, ₹2,000, ₹3,000, ₹4,000, or ₹5,000).",
+        "Specify the pension amount you want to receive (Rs. 1,000, Rs. 2,000, Rs. 3,000, Rs. 4,000, or Rs. 5,000).",
         "The contribution amount will be automatically debited from your account every month."
     ],
     documents: ["Aadhaar Card", "Bank/Post Office Account Details", "Mobile Number"],
@@ -178,7 +178,7 @@ export const allSchemeDetails: SchemeDetails[] = [
     applicationProcess: [
         "Visit any Post Office or an authorized branch of a commercial bank.",
         "Fill out the SSY Account Opening Form (Form-1).",
-        "Submit the form along with the initial deposit (minimum ₹250) and required documents.",
+        "Submit the form along with the initial deposit (minimum Rs. 250) and required documents.",
         "The bank or post office will provide a passbook after the account is opened."
     ],
     documents: ["SSY Account Opening Form", "Birth Certificate of the Girl Child", "Guardian's ID Proof", "Guardian's Address Proof"],
@@ -234,12 +234,12 @@ export const allSchemeDetails: SchemeDetails[] = [
     slug: "mudra-yojana",
     icon: Briefcase,
     category: "Social Welfare",
-    shortDescription: "Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises.",
+    shortDescription: "Provides loans up to Rs. 10 lakh to non-corporate, non-farm small/micro enterprises.",
     longDescription: "Pradhan Mantri MUDRA Yojana (PMMY) provides loans to small business owners. Loans are given through commercial banks, RRBs, Small Finance Banks, MFIs and NBFCs. The borrower can approach any of these lending institutions or apply online.",
     eligibility: [
       "Any Indian Citizen who has a business plan for a non-farm sector income generating activity.",
       "The business must be in manufacturing, processing, trading or service sector.",
-      "The credit need should be up to ₹10 lakh."
+      "The credit need should be up to Rs. 10 lakh."
     ],
     applicationProcess: [
       "Visit the Udyamimitra portal (www.udyamimitra.in) to apply online.",
