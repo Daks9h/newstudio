@@ -22,12 +22,12 @@ import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app';
 // Firebase App Initialization
 // ---
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_AUTH_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_STORAGE_BUCKET',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  projectId: "studio-8370019241-129f4",
+  appId: "1:690117181082:web:00ba31fdf2a61f71af2923",
+  apiKey: "AIzaSyDVrxU_Gr1a7YnU5gyfhRvfkP1Osrrax4M",
+  authDomain: "studio-8370019241-129f4.firebaseapp.com",
+  storageBucket: 'studio-8370019241-129f4.appspot.com',
+  messagingSenderId: "690117181082",
 };
 
 let firebaseApp: FirebaseApp;
