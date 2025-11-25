@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Calendar } from '@/components/ui/calendar';
-import { List, MapPin, Wheat, FileWarning, ArrowRight, Smartphone } from 'lucide-react';
+import { List, MapPin, Wheat, FileWarning, ArrowRight, Smartphone, Calendar as CalendarIcon } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import Link from 'next/link';
 
@@ -188,7 +188,7 @@ export default function PDSPage() {
           {/* Distribution Schedule */}
           <Card>
             <CardHeader className="flex-row items-center gap-4">
-                <Calendar className="w-6 h-6 text-primary" />
+                <CalendarIcon className="w-6 h-6 text-primary" />
               <CardTitle className="font-headline">Distribution Schedule</CardTitle>
             </CardHeader>
             <CardContent className="flex justify-center">
