@@ -35,6 +35,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
+import { ThemeToggle } from '../theme-toggle';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -108,7 +109,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               Digital सखी
             </span>
           </Link>
-          <div className="group-data-[collapsible=icon]:hidden">
+          <div className="group-data-[collapsible=icon]:hidden flex items-center gap-2">
+            <ThemeToggle />
             <UserMenu />
           </div>
         </SidebarHeader>
