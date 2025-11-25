@@ -3,7 +3,7 @@
     {
       "id": "resource-computer-basics",
       "description": "A person learning basic computer skills on a laptop.",
-      "imageUrl": "https://images.unsplash.com/photo-1670552508276-a2808d6fdbea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb21wdXRlciUyMGxlYXJuaW5nfGVufDB8fHx8MTc2NDA1Mjk3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1670552509904-9a64c5f814ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29tcHV0ZXIlMjBsZWFybmluZ3xlbnwwfHx8fDE3NjQwNTI5NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "computer learning"
     },
     {
@@ -15,13 +15,13 @@
     {
       "id": "resource-digital-payments",
       "description": "Someone making a digital payment using a smartphone.",
-      "imageUrl": "https://images.unsplash.com/photo-1556741564-a0e2cc7e2b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtb2JpbGUlMjBwYXltZW50fGVufDB8fHx8MTc2Mzk5MDgyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb2JpbGUlMjBwYXltZW50fGVufDB8fHx8MTc2NDA4OTIxMnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mobile payment"
     },
     {
       "id": "resource-online-services",
       "description": "A diagram showing various online government services.",
-      "imageUrl": "https://images.unsplash.com/photo-1742454582165-deab666a8763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxvbmxpbmUlMjBzZXJ2aWNlc3xlbnwwfHx8fDE3NjQwNTI5NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1688561808434-886a6dd97b8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxvbmxpbmUlMjBzZXJ2aWNlc3xlbnwwfHx8fDE3NjQwNTI5NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "online services"
     }
   ]

@@ -124,10 +124,12 @@ export type ServiceRequest = {
 }
 
 export type CourseLesson = {
-  videoId: string;
   title: string;
-  summary: string;
-  steps: string[];
+  paragraphs: string[];
+  infographicUrl: string;
+  infographicHint: string;
+  keyPoints: string[];
+  videoId?: string;
 };
 
 export type Course = {

@@ -1,6 +1,9 @@
 
 import { Laptop, Wallet, Globe, Lock } from "lucide-react";
 import type { Course } from "./types";
+import { PlaceHolderImages } from "./placeholder-images";
+
+const findImage = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageUrl || '';
 
 export const allCourses: Course[] = [
   {
@@ -10,44 +13,58 @@ export const allCourses: Course[] = [
     icon: Wallet,
     lessons: [
       {
-        videoId: '2pIn2Kj2M2Y',
         title: 'Lesson 1: Introduction to Digital Payments',
-        summary: 'Learn the basics of what digital payments are and why they are important for financial inclusion in rural areas.',
-        steps: [
-            "Understand that digital payments mean paying without cash, using your phone.",
-            "Recognize the benefits: it's fast, safe, and keeps a record of your spending.",
-            "Learn about different types like UPI, mobile wallets, and cards.",
-            "Know that you need a bank account and a smartphone for most digital payments.",
-            "Understand that this technology can help you access services more easily.",
-        ]
+        paragraphs: [
+          "Digital payments are a way to pay for things without using physical cash. Instead of notes and coins, you use your mobile phone, a card, or the internet. Think of it as a digital wallet on your phone. This makes transactions faster, safer, and easier to track.",
+          "For rural communities, this is a powerful tool. It means you don't have to travel far to a bank for every transaction. You can pay for goods at the local shop, send money to family in another village, or receive government scheme benefits directly into your account, all from your phone.",
+          "There are several types of digital payments. The most common are UPI (like Google Pay, PhonePe), mobile wallets (like Paytm), and debit/credit cards. Each works slightly differently, but they all share the goal of making payments simple and secure. To get started, you usually need a bank account linked to your mobile number."
+        ],
+        infographicUrl: findImage('resource-digital-payments'),
+        infographicHint: 'mobile payment',
+        keyPoints: [
+          "Digital payments are cashless transactions using your phone.",
+          "They offer speed, safety, and a clear record of your spending.",
+          "Common types include UPI, mobile wallets, and cards.",
+          "A bank account and a smartphone are usually required.",
+          "Digital payments improve access to financial services in rural areas."
+        ],
+        videoId: '2pIn2Kj2M2Y',
       },
       {
-        videoId: 'P6UPoVdJ34g',
         title: 'Lesson 2: Setting Up and Using UPI',
-        summary: 'A step-by-step guide on how to set up a UPI account on your smartphone and make your first transaction securely.',
-        steps: [
-            "Download a trusted UPI app (like BHIM, Google Pay, PhonePe) from the Play Store.",
-            "Open the app and allow it to verify your phone number (it must be the one linked to your bank).",
-            "Select your bank from the list provided in the app.",
-            "The app will automatically find your bank account.",
-            "Set a 4 or 6-digit UPI PIN. This is a secret code, do not share it.",
-            "To pay someone, enter their UPI ID or phone number, enter the amount, and confirm with your UPI PIN.",
-            "You can also pay at shops by scanning a QR code.",
-        ]
+        paragraphs: [
+          "UPI, or Unified Payments Interface, is the most popular way to make digital payments in India. It lets you transfer money instantly between bank accounts using just your phone. Setting it up is a simple, one-time process.",
+          "First, you need to download a trusted UPI app like BHIM, Google Pay, or PhonePe from the Google Play Store. When you open the app, it will ask for permission to verify your mobile number. It's very important that this is the same number you have registered with your bank.",
+          "Once your number is verified, the app will ask you to select your bank from a list. It will then automatically find your account. The final step is to create a secret 4 or 6-digit UPI PIN. This PIN is like your ATM PIN—you must never share it with anyone. You will use this PIN for every transaction to keep your money safe."
+        ],
+        infographicUrl: findImage('resource-online-services'),
+        infographicHint: 'online services',
+        keyPoints: [
+          "Download a trusted UPI app (BHIM, Google Pay, etc.).",
+          "Use the mobile number that is linked to your bank account.",
+          "Select your bank and let the app find your account.",
+          "Create a secret 4 or 6-digit UPI PIN and never share it.",
+          "Use this PIN to authorize all your payments securely."
+        ],
+        videoId: 'P6UPoVdJ34g',
       },
       {
-        videoId: 'i_t5d2DB2s4',
         title: 'Lesson 3: Staying Safe with Online Transactions',
-        summary: 'Understand the common risks associated with digital payments and learn best practices to keep your money and data safe.',
-        steps: [
-            "Never share your UPI PIN, ATM PIN, or password with anyone. Banks never ask for this.",
-            "Beware of fake calls or messages asking for your details or telling you to click a link.",
-            "Only use trusted apps from the official Google Play Store.",
-            "When paying, always double-check the name of the person or shop before entering your PIN.",
-            "Do not approve a UPI payment request from someone you don't know.",
-            "If a transaction fails but money is deducted, wait for 24-48 hours. It usually comes back automatically.",
-            "Regularly check your transaction history for any payments you don't recognize.",
-        ]
+        paragraphs: [
+            "While digital payments are very secure, it's important to be careful to protect yourself from scams. The most important rule is to never share your secret PINs (UPI PIN, ATM PIN) or passwords with anyone. Banks or company representatives will never call you to ask for this information.",
+            "Be cautious of fake calls, SMS messages, or emails that create a sense of urgency, like 'Your account will be blocked!' or 'You have won a lottery!'. These are often tricks to get your personal information. Do not click on any links in such messages.",
+            "Always double-check the name and UPI ID of the person or shop you are paying. Make sure it matches who you intend to pay before you enter your PIN. Also, be careful about 'payment requests'. Scammers may send you a request, and if you approve it and enter your PIN, money will be taken from your account."
+        ],
+        infographicUrl: findImage('resource-internet-safety'),
+        infographicHint: 'internet security',
+        keyPoints: [
+            "NEVER share your UPI PIN, ATM PIN, or passwords with anyone.",
+            "Be suspicious of urgent messages or offers that seem too good to be true.",
+            "Verify the recipient's name before approving any payment.",
+            "Do not approve payment requests from unknown people.",
+            "Only download financial apps from the official Google Play Store."
+        ],
+        videoId: 'i_t5d2DB2s4',
       },
     ],
     quiz: [
@@ -75,42 +92,58 @@ export const allCourses: Course[] = [
     icon: Laptop,
     lessons: [
       {
-        videoId: 'B2pA06A3-yY',
         title: 'Lesson 1: What is a Computer?',
-        summary: 'An introduction to the different parts of a computer (monitor, CPU, keyboard, mouse) and what they do.',
-        steps: [
-            "Identify the main parts: Monitor (screen), CPU (the box), Keyboard (for typing), and Mouse (for pointing).",
-            "Understand how to turn the computer on using the power button on the CPU.",
-            "Recognize the 'desktop' - the main screen you see after the computer starts.",
-            "Learn that icons on the desktop are shortcuts to programs.",
-            "Know how to properly shut down the computer using the 'Shut Down' option in the Start Menu.",
-        ]
+        paragraphs: [
+          "A computer is an electronic machine that helps us with many tasks, like writing letters, watching videos, and connecting with people. The main parts are the monitor (the screen), the CPU (the box or 'brain' of the computer), the keyboard (for typing), and the mouse (for pointing and clicking).",
+          "To start, you press the power button, usually found on the CPU. The computer will then load its main program, called the operating system. After a minute, you will see the 'desktop'. This is the main screen with small pictures called 'icons'.",
+          "These icons are shortcuts to different programs or files. For example, you might see an icon for a web browser to access the internet. When you are finished using the computer, it's important to shut it down properly through the 'Start Menu' to avoid losing your work."
+        ],
+        infographicUrl: findImage('resource-computer-basics'),
+        infographicHint: 'computer learning',
+        keyPoints: [
+          "The main parts are the monitor, CPU, keyboard, and mouse.",
+          "The power button on the CPU turns the computer on.",
+          "The 'desktop' is the main screen with icons.",
+          "Icons are shortcuts to open programs.",
+          "Always use the 'Shut Down' option to turn off the computer."
+        ],
+        videoId: 'B2pA06A3-yY',
       },
       {
-        videoId: 'E99s4o1Z3aI',
         title: 'Lesson 2: Using the Keyboard and Mouse',
-        summary: 'Learn how to type using the keyboard and how to click, double-click, and right-click with a mouse.',
-        steps: [
-            "Hold the mouse gently and move it to see the cursor move on the screen.",
-            "Practice a single-click (left button) to select an item.",
-            "Practice a double-click (left button twice quickly) to open a program or file.",
-            "Understand that a right-click opens a menu with more options.",
-            "Locate the letter keys on the keyboard to type your name.",
-            "Find the 'Enter' key to start a new line and the 'Backspace' key to delete.",
-        ]
+        paragraphs: [
+          "The mouse and keyboard are your main tools for interacting with the computer. The mouse controls the arrow, or 'cursor', on the screen. As you move the mouse on your desk, the cursor moves with it. The mouse has two main buttons. The left button is used for most actions.",
+          "A single 'click' with the left button is used to select an item, like an icon or a file. A 'double-click' (two quick clicks) is used to open that item. The right button is used less often; clicking it usually opens a menu with more options for the item you clicked on.",
+          "The keyboard is used for typing text. The keys are arranged in a 'QWERTY' layout. You can use it to write documents, search for information, or fill out forms. The 'Enter' key confirms an action or starts a new line, while the 'Backspace' key deletes characters behind the cursor."
+        ],
+        infographicUrl: findImage('resource-computer-basics'),
+        infographicHint: 'computer learning',
+        keyPoints: [
+          "The mouse controls the cursor on the screen.",
+          "A single-click selects an item; a double-click opens it.",
+          "A right-click opens a menu with more options.",
+          "The keyboard is for typing text.",
+          "The 'Enter' key confirms actions, and 'Backspace' deletes text."
+        ],
+        videoId: 'E99s4o1Z3aI',
       },
       {
-        videoId: 'aKRYa21-93M',
         title: 'Lesson 3: Understanding Files & Folders',
-        summary: 'Discover how to create, open, save, and organize your documents and pictures using files and folders.',
-        steps: [
-            "Think of folders as containers to keep your work organized.",
-            "To create a new folder, right-click on the desktop, go to 'New', and select 'Folder'.",
-            "Give your folder a clear name, like 'My Documents'.",
-            "Understand that a 'file' is a single item, like a letter, a photo, or a song.",
-            "Learn to save your work by going to 'File' and then 'Save' inside a program.",
-            "Practice dragging and dropping files into your folders to keep your desktop clean.",
-        ]
+        paragraphs: [
+            "Files and folders are how a computer organizes information. A 'file' is a single item, such as a document you've written, a photograph, or a song. Each file has a name and an icon that tells you what type of file it is.",
+            "A 'folder' is like a container where you can store files. Using folders helps you keep your work organized and easy to find. For example, you can create a folder called 'My Photos' to store all your pictures, and another called 'My Documents' for your written files.",
+            "You can create new folders on your desktop or inside other folders. To do this, you usually right-click on an empty space, choose 'New', and then 'Folder'. Give it a name that makes sense. You can move files into folders by 'dragging and dropping' them with your mouse. This helps keep your desktop tidy and your files easy to manage."
+        ],
+        infographicUrl: findImage('resource-computer-basics'),
+        infographicHint: 'computer learning',
+        keyPoints: [
+            "A file is a single item like a document or photo.",
+            "A folder is a container to store and organize files.",
+            "Right-click on an empty space to create a new folder.",
+            "Give folders clear, descriptive names.",
+            "Drag and drop files into folders to keep your computer organized."
+        ],
+        videoId: 'aKRYa21-93M',
       },
     ],
     quiz: [
@@ -138,44 +171,58 @@ export const allCourses: Course[] = [
     icon: Globe,
     lessons: [
       {
-        videoId: 'sS_PsVNr4a4',
         title: 'Lesson 1: What are e-Governance Services?',
-        summary: 'An overview of how governments provide services online and the benefits of using digital platforms like official portals and apps.',
-        steps: [
-            "Understand that 'e-Governance' means government services are available online.",
-            "Recognize benefits like saving time, less paperwork, and no need to travel to an office.",
-            "Learn to identify official government websites, which often end in '.gov.in' or '.nic.in'.",
-            "Be aware that many services like applying for schemes or paying bills can be done online.",
-            "Know that you can find these services on national portals or your state's specific government website.",
-        ]
+        paragraphs: [
+            "'e-Governance' is a simple term for when government services are provided online through the internet. This means you can access many services from a computer or smartphone without needing to travel to a government office. It makes processes faster, more transparent, and more convenient.",
+            "The benefits are significant. You can save time and money on travel, avoid long queues, and access services 24/7. It also reduces paperwork and makes it easier to track the status of your application. Examples include applying for schemes, paying utility bills, or accessing land records.",
+            "It's important to use official government websites. These websites often have domain names ending in '.gov.in' or '.nic.in'. You can usually find a link to your state's main portal or specific department websites. These official sites are the most secure and reliable sources of information and services."
+        ],
+        infographicUrl: findImage('resource-online-services'),
+        infographicHint: 'online services',
+        keyPoints: [
+            "e-Governance means government services are available online.",
+            "It saves time, money, and reduces paperwork.",
+            "Look for official websites ending in '.gov.in' or '.nic.in'.",
+            "Many tasks like applying for schemes or paying bills can be done online.",
+            "Services are often available 24/7 from anywhere with internet."
+        ],
+        videoId: 'sS_PsVNr4a4',
       },
       {
-        videoId: 'g-n7a0R3_bA',
         title: 'Lesson 2: Using DigiLocker for Your Documents',
-        summary: 'Learn how to set up and use DigiLocker to store and share your important documents like Aadhaar and driving license digitally.',
-        steps: [
-            "Go to the DigiLocker website or download the app.",
-            "Sign up using your Aadhaar number and the mobile number linked to it.",
-            "You will receive an OTP to complete your registration.",
-            "Once logged in, you can 'fetch' or 'pull' documents from government departments.",
-            "Search for your Driving License, Vehicle RC, or Class X/XII Marksheet.",
-            "Provide the required details to link them to your DigiLocker.",
-            "These digital documents are legally valid, just like the originals.",
-        ]
+        paragraphs: [
+            "DigiLocker is a digital locker service from the Government of India where you can securely store and share your official documents. Think of it as a secure online folder for your most important papers, like your Aadhaar card, driving license, and education certificates.",
+            "To get started, you can download the DigiLocker app or visit its website. You will need to sign up using your Aadhaar number. An OTP (One-Time Password) will be sent to the mobile number linked with your Aadhaar to complete the registration. This ensures that only you can create your DigiLocker account.",
+            "Once logged in, you can 'fetch' documents directly from government departments. For example, you can get your digital driving license from the Ministry of Road Transport or your marksheets from the CBSE board. These fetched documents in DigiLocker are considered legally valid and are accepted as originals by many organizations, saving you the trouble of carrying physical copies."
+        ],
+        infographicUrl: findImage('resource-online-services'),
+        infographicHint: 'online services',
+        keyPoints: [
+            "DigiLocker is a secure online platform for your official documents.",
+            "Sign up using your Aadhaar number and the linked mobile number.",
+            "You can 'fetch' original documents like driving licenses and marksheets.",
+            "Documents in DigiLocker are legally equivalent to physical copies.",
+            "It provides a safe and convenient way to carry and share documents."
+        ],
+        videoId: 'g-n7a0R3_bA',
       },
       {
-        videoId: '9rvMVq5a9q0',
         title: 'Lesson 3: How to Navigate a Government Website',
-        summary: 'A practical guide on how to find the "Apply Now" or "Check Status" sections on a typical government scheme website.',
-        steps: [
-            "Open the official website for the scheme (e.g., PM-KISAN).",
-            "Look for main menu sections like 'Services', 'Schemes', or 'Farmers Corner'.",
-            "Search for buttons or links with text like 'Apply Now', 'New Registration', or 'Login'.",
-            "To check your application, look for 'Track Status' or 'Beneficiary Status'.",
-            "Have your important numbers ready, like your Aadhaar number or application ID.",
-            "Read the instructions and fill in the information carefully.",
-            "Always note down your application reference number after submitting.",
-        ]
+        paragraphs: [
+            "Government websites can sometimes seem confusing, but they usually follow a similar structure. When you land on a scheme's official homepage, take a moment to look at the main menu, which is often at the top of the page. Look for keywords that match what you want to do.",
+            "If you want to apply for a new scheme, look for buttons or links that say 'Apply Now', 'New Registration', 'Register', or 'Services'. These will usually take you to the application form. For farmers, there might be a special section called 'Farmers Corner' with all the relevant links.",
+            "If you have already applied and want to check the progress, search for links like 'Track Application Status', 'Check Status', or 'Beneficiary List'. You will often need your Aadhaar number or the application reference number that you received when you first applied. Always write down or save your reference number after submitting an application."
+        ],
+        infographicUrl: findImage('resource-online-services'),
+        infographicHint: 'online services',
+        keyPoints: [
+            "Look for main menu sections like 'Services' or 'Schemes'.",
+            "To apply, find links such as 'Apply Now' or 'New Registration'.",
+            "To check progress, look for 'Track Status' or 'Beneficiary Status'.",
+            "Keep your Aadhaar number and application reference number handy.",
+            "Always save your application reference number after submitting."
+        ],
+        videoId: '9rvMVq5a9q0',
       },
     ],
     quiz: [
@@ -203,43 +250,58 @@ export const allCourses: Course[] = [
     icon: Lock,
     lessons: [
       {
-        videoId: 'pL3oB-5o30Y',
         title: 'Lesson 1: Creating Strong Passwords',
-        summary: 'Learn the principles of creating a password that is difficult for others to guess but easy for you to remember.',
-        steps: [
-            "Avoid simple passwords like '123456', 'password', or your name.",
-            "A strong password should have at least 8 characters.",
-            "Mix uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), and symbols (!, @, #).",
-            "A good trick is to use a memorable phrase, like 'My!Village&Sun@2024'.",
-            "Do not use the same password for all your accounts.",
-            "Never write your password down where others can see it.",
-        ]
+        paragraphs: [
+          "A password is the first line of defense for your online accounts. A weak password is like leaving your door unlocked. Avoid using simple, easy-to-guess information like your name, birthday, '123456', or the word 'password'.",
+          "A strong password should be long, ideally at least 8-10 characters. The best passwords are a mix of different character types: uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), and symbols (like !, @, #, $). The more variety you use, the harder it is for someone to guess.",
+          "A good technique is to think of a memorable phrase and turn it into a password. For example, 'My first school was Sunrise!' could become 'MfswS!2'. It's also very important to use different passwords for different websites, especially for important accounts like your email and banking."
+        ],
+        infographicUrl: findImage('resource-internet-safety'),
+        infographicHint: 'internet security',
+        keyPoints: [
+          "Avoid simple and easy-to-guess passwords.",
+          "Use a mix of uppercase, lowercase, numbers, and symbols.",
+          "Make your passwords at least 8-10 characters long.",
+          "Turn a memorable phrase into a complex password.",
+          "Use a different password for each important online account."
+        ],
+        videoId: 'pL3oB-5o30Y',
       },
       {
-        videoId: 'ybrvWd37p9w',
         title: 'Lesson 2: Identifying Online Scams (Phishing)',
-        summary: 'Understand how to spot fake emails, messages, and websites that try to steal your personal information like PINs and passwords.',
-        steps: [
-            "Be suspicious of messages that create urgency, like 'Your account will be blocked!'",
-            "Check the sender's email address. Scammers often use slightly misspelled or unofficial addresses.",
-            "Do not click on links in suspicious emails or SMS messages.",
-            "Be wary of offers that seem too good to be true (e.g., winning a lottery you never entered).",
-            "Official companies or banks will never ask for your password or PIN in an email.",
-            "If a message seems suspicious, it's always safer to ignore and delete it.",
-        ]
+        paragraphs: [
+            "'Phishing' is a type of online scam where criminals try to trick you into giving them your personal information, like your password, bank details, or Aadhaar number. They often do this by sending fake emails or messages that look like they are from a real company or bank.",
+            "Be suspicious of any message that creates a sense of panic or urgency. Scammers use phrases like 'Your account has been compromised!' or 'You have won a prize, click here to claim!'. They want you to act quickly without thinking. Always check the sender's email address; it often has small spelling mistakes or looks unofficial.",
+            "The most important rule is to never click on links or download attachments from an unknown or suspicious sender. If you receive a message that seems to be from your bank, it is safer to go to the bank's official website by typing the address yourself or using their official app, rather than clicking a link in an email."
+        ],
+        infographicUrl: findImage('resource-internet-safety'),
+        infographicHint: 'internet security',
+        keyPoints: [
+            "Phishing is a scam to steal your personal information.",
+            "Be wary of messages that create panic or seem too good to be true.",
+            "Always check the sender's email address for mistakes.",
+            "Do not click on links or download files from suspicious emails.",
+            "Banks and official companies will never ask for your password via email."
+        ],
+        videoId: 'ybrvWd37p9w',
       },
       {
-        videoId: 'J3aUhb9kHhg',
         title: 'Lesson 3: What is OTP and Why You Should Never Share It',
-        summary: 'Learn what a One-Time Password (OTP) is, why it is used, and the absolute rule of never sharing it with anyone.',
-        steps: [
-            "Understand that an OTP is a temporary, secret code sent to your phone to confirm a transaction or login.",
-            "It is like a digital key that can only be used once.",
-            "The most important rule: NEVER share your OTP with anyone, not even someone claiming to be from the bank, police, or a company.",
-            "Scammers will often call and try to trick you into sharing the OTP to steal your money.",
-            "Remember: Sharing your OTP is like giving someone the keys to your safe.",
-            "If you receive an OTP for a transaction you did not do, ignore it and be alert.",
-        ]
+        paragraphs: [
+            "An OTP, or One-Time Password, is a special, temporary code that is sent to your registered mobile number when you are trying to make a transaction or log in to a secure account. It acts as a second layer of security to prove that it is really you.",
+            "Think of it as a digital key that only works once and expires after a few minutes. Even if someone has your password, they cannot complete the transaction without the OTP that has been sent to your phone. This is why it is such a powerful security feature.",
+            "There is one absolute rule about OTPs: YOU MUST NEVER SHARE YOUR OTP WITH ANYONE. No one from a bank, a company, or even the police will ever call you and ask for your OTP. Scammers will often create a fake story to trick you into sharing it so they can steal your money. Remember, if you share your OTP, you are giving them direct access to your account."
+        ],
+        infographicUrl: findImage('resource-internet-safety'),
+        infographicHint: 'internet security',
+        keyPoints: [
+            "An OTP is a temporary code sent to your phone for security.",
+            "It is used to confirm that it's really you making a transaction.",
+            "NEVER share your OTP with anyone, for any reason.",
+            "No legitimate company or bank will ever ask you for your OTP over the phone.",
+            "Sharing your OTP is like giving away the keys to your money."
+        ],
+        videoId: 'J3aUhb9kHhg',
       },
     ],
     quiz: [
