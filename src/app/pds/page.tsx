@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Calendar } from '@/components/ui/calendar';
-import { List, MapPin, Wheat, FileWarning, ArrowRight } from 'lucide-react';
+import { List, MapPin, Wheat, FileWarning, ArrowRight, Smartphone } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import Link from 'next/link';
 
@@ -165,6 +165,23 @@ export default function PDSPage() {
                         <li>Sugar: 1kg per family</li>
                         <li>Kerosene: 1 litre per family</li>
                     </ul>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader className="flex-row items-center gap-4">
+                    <Smartphone className="w-6 h-6 text-primary" />
+                    <CardTitle className="font-headline">One Nation One Ration Card</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-sm text-muted-foreground mb-4">
+                        Use the "Mera Ration" app to locate fair price shops, check entitlements, and view transactions anywhere in the country.
+                    </p>
+                    <a href="https://meration.nic.in/" target="_blank" rel="noopener noreferrer">
+                        <Button className="w-full">
+                            Visit Mera Ration Website <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                    </a>
                 </CardContent>
             </Card>
 
