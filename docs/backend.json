@@ -1,0 +1,113 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Represents a user's profile information.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The user's unique ID."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        },
+        "name": {
+          "type": "string",
+          "description": "The user's full name."
+        },
+        "village": {
+          "type": "string",
+          "description": "The village where the user resides."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the user profile was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the user profile was last updated."
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "Represents a user's application for a government scheme.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who submitted the application."
+        },
+        "schemeName": {
+          "type": "string",
+          "description": "The name of the scheme the application is for."
+        },
+        "submissionDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time the application was submitted."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Pending", "Approved", "Rejected"],
+          "description": "The current status of the application."
+        }
+      },
+      "required": ["userId", "schemeName", "submissionDate", "status"]
+    },
+    "Progress": {
+      "title": "Progress",
+      "description": "Represents a user's progress in a course.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user."
+        },
+        "course": {
+          "type": "string",
+          "description": "The name of the course."
+        },
+        "score": {
+          "type": "number",
+          "description": "The user's score in the course quiz."
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the course was completed."
+        }
+      },
+      "required": ["userId", "course", "score", "completedAt"]
+    }
+  },
+  "auth": {
+    "providers": ["password"]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Stores public profile information for each user."
+    },
+    "/applications/{applicationId}": {
+      "schema": {
+        "$ref": "#/entities/Application"
+      },
+      "description": "Stores all submitted applications for various schemes."
+    },
+    "/progress/{progressId}": {
+      "schema": {
+        "$ref": "#/entities/Progress"
+      },
+      "description": "Stores user progress for courses."
+    }
+  }
+}

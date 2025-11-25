@@ -25,6 +25,7 @@ import {
   LogIn,
   Mic,
   FileText,
+  User,
 } from 'lucide-react';
 import { useAuth } from '@/firebase/provider';
 import {
@@ -44,6 +45,7 @@ const navItems = [
   { href: '/services', label: 'Service Directory', icon: BookOpenCheck },
   { href: '/schemes', label: 'Government Schemes', icon: FileText },
   { href: '/resources', label: 'Digital Literacy', icon: GraduationCap },
+  { href: '/course', label: 'Digital Course', icon: BrainCircuit },
   { href: '/progress', label: 'Progress Tracking', icon: LineChart },
   { href: '/forum', label: 'Community Forum', icon: MessagesSquare },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },
@@ -83,13 +85,20 @@ function UserMenu() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">
-              {user.displayName}
+              {user.displayName ?? 'User'}
             </p>
             <p className="text-xs leading-none text-muted-foreground">
               {user.email}
             </p>
           </div>
         </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link href="/profile">
+            <User className="mr-2 h-4 w-4" />
+            <span>Profile</span>
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => logout()}>
           <LogOut className="mr-2 h-4 w-4" />

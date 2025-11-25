@@ -53,3 +53,23 @@ export type GovernmentScheme = {
   icon: LucideIcon;
   applyLink: string;
 };
+
+export type UserProfile = {
+  uid: string;
+  name: string;
+  email: string;
+  village: string;
+};
+
+export type Application = {
+  id: string;
+  schemeName: string;
+  submissionDate: string;
+  status: 'Pending' | 'Approved' | 'Rejected';
+};
+
+export type QuizQuestion = {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+};

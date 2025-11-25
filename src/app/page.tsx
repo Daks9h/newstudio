@@ -37,6 +37,12 @@ const features = [
     href: "/resources",
     icon: GraduationCap,
   },
+   {
+    title: "Digital Course",
+    description: "Take an interactive course with videos and quizzes.",
+    href: "/course",
+    icon: BrainCircuit,
+  },
   {
     title: "Progress Tracking",
     description: "Monitor your learning and development journey.",
