@@ -46,7 +46,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <Link href="/" className="flex items-center gap-2">
                 <Leaf className="w-8 h-8 text-primary" />
                 <span className="text-lg font-bold font-headline group-data-[collapsible=icon]:hidden">
-                    RuralConnect
+                    Digital Sakhi
                 </span>
             </Link>
         </SidebarHeader>
