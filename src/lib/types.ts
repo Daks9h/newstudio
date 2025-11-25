@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from 'lucide-react';
 
 export type Service = {
@@ -150,4 +151,18 @@ export type MobileUnitSchedule = {
   village: string;
   time: string;
   services: string[];
+};
+
+export type TelemedicineBooking = {
+    id?: string;
+    userId: string;
+    patientName: string;
+    age: number;
+    phone: string;
+    healthIssue: string;
+    consultationDate: any;
+    timeSlot: 'Morning' | 'Evening';
+    consultationType: 'Video' | 'Phone';
+    status: 'Scheduled' | 'Completed' | 'Cancelled';
+    createdAt: any;
 };

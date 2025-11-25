@@ -14,7 +14,7 @@ import {
   FirestorePermissionError,
   type SecurityRuleContext,
 } from '@/firebase/errors';
-import type { UserProfile, PDSComplaint, ServiceRequestForm, Application, HealthAppointment } from '@/lib/types';
+import type { UserProfile, PDSComplaint, ServiceRequestForm, Application, HealthAppointment, TelemedicineBooking } from '@/lib/types';
 
 export function updateUserProfile(
   db: Firestore,
@@ -186,4 +186,26 @@ export function subscribeToMobileUnitAlerts(
     } satisfies SecurityRuleContext);
     errorEmitter.emit('permission-error', permissionError);
   });
+}
+
+export function bookTelemedicineConsultation(
+    db: Firestore,
+    booking: Omit<TelemedicineBooking, 'id' | 'status' | 'createdAt'>
+) {
+    const bookingCollection = collection(db, 'telemedicineBookings');
+    const newBooking = {
+        ...booking,
+        status: 'Scheduled',
+        createdAt: serverTimestamp(),
+    };
+
+    addDoc(bookingCollection, newBooking)
+    .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+            path: bookingCollection.path,
+            operation: 'create',
+            requestResourceData: newBooking,
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+    });
 }
