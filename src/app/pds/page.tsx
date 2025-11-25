@@ -114,39 +114,93 @@ export default function PDSPage() {
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Eligibility Criteria</AccordionTrigger>
                   <AccordionContent>
-                    <p className="mb-2">Eligibility for ration cards depends on your family's income level and is determined by state government guidelines. The main categories are:</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li><strong>BPL (Below Poverty Line):</strong> For families with low income. They receive food grains at highly subsidized prices.</li>
-                      <li><strong>AAY (Antyodaya Anna Yojana):</strong> For the poorest of the poor families. They are entitled to the highest level of subsidy.</li>
-                      <li><strong>APL (Above Poverty Line):</strong> For families with income above the poverty line. They receive food grains at a less subsidized rate.</li>
+                    <p className="mb-2">Your family's eligibility for a ration card depends on your income and is decided by your state government. Here is a simple explanation of the main categories:</p>
+                    <ul className="list-disc pl-5 space-y-2 text-sm">
+                      <li>
+                        <strong>Antyodaya Anna Yojana (AAY):</strong> This is for the 'poorest of the poor' families. This includes families with no stable income, widows, or households headed by disabled persons. They get the highest subsidy and receive 35kg of foodgrains per month at very low prices.
+                      </li>
+                      <li>
+                        <strong>Below Poverty Line (BPL):</strong> These cards are for families whose income is below the poverty line set by the government. They receive 15kg to 35kg of foodgrains per family per month at a subsidized price, which is more than AAY but still very low.
+                      </li>
+                      <li>
+                        <strong>Above Poverty Line (APL):</strong> These cards are for families whose income is above the poverty line. They are entitled to 15kg to 35kg of foodgrains per family per month, but the price is higher than for BPL families.
+                      </li>
+                       <li>
+                        <strong>Annapurna Yojana (AY):</strong> This is for poor senior citizens (above 65 years) who are not receiving any other pension. They are eligible for 10kg of foodgrains for free every month.
+                      </li>
                     </ul>
+                     <p className="mt-4 text-xs text-muted-foreground">Note: The exact income levels and rules can vary slightly from state to state.</p>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger>How to Apply for a New Card</AccordionTrigger>
                   <AccordionContent>
-                    <p className="mb-2">You can apply for a new ration card online through your state's food portal or offline at the local food and civil supplies office. You will generally need the following documents:</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                        <li><strong>Application Form:</strong> Correctly filled out.</li>
-                        <li><strong>Identity Proof:</strong> Aadhaar Card, Voter ID, or Driving License.</li>
-                        <li><strong>Address Proof:</strong> Electricity Bill, Water Bill, or Bank Passbook.</li>
-                        <li><strong>Income Certificate:</strong> Issued by a competent authority.</li>
-                        <li><strong>Photographs:</strong> Passport-sized photos of the head of the family.</li>
-                        <li><strong>Family Details:</strong> Aadhaar cards of all family members.</li>
-                        <li><strong>Affidavit:</strong> A declaration that you do not hold a ration card in any other state.</li>
-                    </ul>
+                    <p className="mb-2 font-semibold">Follow these steps to apply for a new ration card:</p>
+                    <ol className="list-decimal pl-5 space-y-2 text-sm">
+                        <li>
+                            <strong>Get the Application Form:</strong> You can get the form from your local Ration Office (also known as the Food and Supply Office or Circle Office) or download it from your state's food portal website.
+                        </li>
+                        <li>
+                            <strong>Fill the Form:</strong> Fill out the application form carefully. You will need details for all family members.
+                        </li>
+                        <li>
+                            <strong>Attach Required Documents:</strong> You will need copies of the following documents:
+                            <ul className="list-disc pl-5 mt-2 space-y-1">
+                                <li><strong>Proof of Identity:</strong> Aadhaar Card or Voter ID card of the head of the family.</li>
+                                <li><strong>Proof of Address:</strong> Electricity bill, water bill, or first page of your bank passbook.</li>
+                                <li><strong>Photographs:</strong> Two passport-sized photos of the head of the family.</li>
+                                <li><strong>Family Member Details:</strong> Copies of Aadhaar cards for all members.</li>
+                                <li><strong>Income Proof:</strong> An income certificate from the relevant authority (like the village panchayat or revenue office).</li>
+                                <li><strong>Surrender Certificate:</strong> If you are moving from another place, you need a certificate to prove you have surrendered your old ration card.</li>
+                                <li><strong>Bank Account Details:</strong> A copy of the first page of your bank passbook.</li>
+                            </ul>
+                        </li>
+                         <li>
+                            <strong>Submit the Form:</strong> Submit the filled form along with all the documents at the Ration Office. Ask for a receipt or an acknowledgement slip.
+                        </li>
+                        <li>
+                            <strong>Verification:</strong> An inspector from the food office may visit your home to verify the details you provided.
+                        </li>
+                         <li>
+                            <strong>Receive Your Card:</strong> After successful verification, your ration card will be issued. This can take 2 to 4 weeks.
+                        </li>
+                    </ol>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger>How to Update Existing Card</AccordionTrigger>
                   <AccordionContent>
-                    <p className="mb-2">To make changes like adding or removing a family member, or correcting an address, you need to submit a specific form at the food office with supporting documents.</p>
-                     <ul className="list-disc pl-5 space-y-1 text-sm">
-                        <li><strong>To Add a Member (e.g., newborn):</strong> Submit the child's birth certificate along with the ration card.</li>
-                        <li><strong>To Add a Member (e.g., new bride):</strong> Submit the marriage certificate and a surrender certificate for her previous ration card.</li>
-                        <li><strong>To Change Address:</strong> Provide new address proof like an electricity bill or rent agreement.</li>
-                        <li><strong>To Remove a Member:</strong> A death certificate is required in case of a member's demise.</li>
-                    </ul>
+                    <p className="mb-2 font-semibold">You need to update your ration card when there are changes in your family. Here’s how:</p>
+                     <div className="space-y-4 text-sm">
+                        <div>
+                            <h4 className="font-medium mb-1">To Add a New Family Member (e.g., a newborn baby):</h4>
+                             <ol className="list-decimal pl-5 space-y-1">
+                                <li>Get the specific form for adding a member from the Ration Office.</li>
+                                <li>Submit the form along with the child's birth certificate and a copy of your ration card.</li>
+                             </ol>
+                        </div>
+                         <div>
+                            <h4 className="font-medium mb-1">To Add a Family Member (e.g., a new bride):</h4>
+                             <ol className="list-decimal pl-5 space-y-1">
+                                <li>Her name must first be removed from her family's ration card. Get a "surrender certificate" for this.</li>
+                                <li>Submit the application form, your ration card, the surrender certificate, and the marriage certificate at your Ration Office.</li>
+                             </ol>
+                        </div>
+                         <div>
+                            <h4 className="font-medium mb-1">To Remove a Family Member (e.g., due to death):</h4>
+                             <ol className="list-decimal pl-5 space-y-1">
+                                <li>Get the form for member deletion from the Ration Office.</li>
+                                <li>Submit the form along with the person's death certificate and the original ration card.</li>
+                             </ol>
+                        </div>
+                         <div>
+                            <h4 className="font-medium mb-1">To Change Address:</h4>
+                             <ol className="list-decimal pl-5 space-y-1">
+                                <li>Get the address change form from your new local Ration Office.</li>
+                                <li>Submit it with proof of your new address (like a new electricity bill) and a surrender certificate from your old Ration Office.</li>
+                             </ol>
+                        </div>
+                     </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
