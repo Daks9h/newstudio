@@ -20,7 +20,7 @@ export default function ResourcesPage() {
         Improve your skills by taking our interactive video courses.
       </p>
       
-      <div className="grid gap-6 pt-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 pt-4 md:grid-cols-2 lg:grid-cols-2">
         {allCourses.map((course) => (
           <Card key={course.slug} className="flex flex-col">
             <CardHeader>
