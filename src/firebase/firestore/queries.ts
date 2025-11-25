@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -9,8 +10,9 @@ import {
   orderBy,
   doc,
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
-import type { Application, Progress, HealthAppointment, SchoolDetails } from '@/lib/types';
+import type { Application, Progress, HealthAppointment, SchoolDetails, ServiceRequest } from '@/lib/types';
 
 export async function getUserApplications(
   db: Firestore,
@@ -66,4 +68,18 @@ export async function getSchoolDetails(db: Firestore): Promise<SchoolDetails | n
     }
 }
 
-    
+export async function getAllServiceRequests(db: Firestore): Promise<ServiceRequest[]> {
+    const requestsCol = collection(db, 'serviceRequests');
+    const q = query(requestsCol, orderBy('requestDate', 'desc'));
+    const querySnapshot = await getDocs(q);
+    const requests: ServiceRequest[] = [];
+    querySnapshot.forEach((doc) => {
+        requests.push({ id: doc.id, ...doc.data() } as ServiceRequest);
+    });
+    return requests;
+}
+
+export async function updateServiceRequestStatus(db: Firestore, requestId: string, status: ServiceRequest['status']) {
+    const requestRef = doc(db, 'serviceRequests', requestId);
+    await updateDoc(requestRef, { status });
+}

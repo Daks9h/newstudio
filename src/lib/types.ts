@@ -1,5 +1,6 @@
 
 import type { LucideIcon } from 'lucide-react';
+import { Timestamp } from 'firebase/firestore';
 
 export type Service = {
   category: string;
@@ -87,6 +88,7 @@ export type QuizQuestion = {
 };
 
 export type PDSComplaint = {
+  id?: string;
   userId: string;
   rationCardNumber: string;
   shopName: string;
@@ -109,6 +111,17 @@ export type ServiceRequestForm = {
   purpose: string;
   document: any;
 };
+
+export type ServiceRequest = {
+  id?: string;
+  userId: string;
+  serviceType: string;
+  applicantName: string;
+  phone: string;
+  purpose: string;
+  requestDate: Timestamp;
+  status: 'Pending' | 'Approved' | 'Rejected';
+}
 
 export type CourseLesson = {
   videoId: string;
@@ -177,5 +190,3 @@ export type SchoolDetails = {
     academicCalendar: { event: string; date: string }[];
     upcomingEvents: { event: string; date: string }[];
 }
-
-    

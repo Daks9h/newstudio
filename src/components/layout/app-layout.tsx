@@ -1,5 +1,6 @@
+
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -11,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarSeparator,
 } from '@/components/ui/sidebar';
 import {
   BarChart3,
@@ -26,6 +28,7 @@ import {
   User,
   Archive,
   HeartPulse,
+  ShieldCheck,
 } from 'lucide-react';
 import { useAuth } from '@/firebase/provider';
 import {
@@ -122,6 +125,19 @@ function UserMenu() {
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      user.getIdTokenResult().then((idTokenResult) => {
+        setIsAdmin(!!idTokenResult.claims.admin);
+      });
+    } else {
+      setIsAdmin(false);
+    }
+  }, [user]);
+
 
   return (
     <SidebarProvider>
@@ -156,6 +172,25 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 </Link>
               </SidebarMenuItem>
             ))}
+            {isAdmin && (
+              <>
+                <SidebarSeparator />
+                <SidebarMenuItem>
+                  <Link href="/admin">
+                    <SidebarMenuButton
+                      isActive={pathname === '/admin'}
+                      tooltip={{
+                        children: 'Admin Panel',
+                        className: 'font-body',
+                      }}
+                    >
+                      <ShieldCheck />
+                      <span>Admin Panel</span>
+                    </SidebarMenuButton>
+                  </Link>
+                </SidebarMenuItem>
+              </>
+            )}
           </SidebarMenu>
         </SidebarContent>
       </Sidebar>
