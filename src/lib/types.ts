@@ -144,3 +144,10 @@ export type HealthAppointment = {
     status: 'Scheduled' | 'Completed' | 'Cancelled';
     createdAt: any;
 };
+
+export type MobileUnitSchedule = {
+  date: Date;
+  village: string;
+  time: string;
+  services: string[];
+};

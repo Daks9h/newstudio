@@ -167,3 +167,23 @@ export function cancelHealthAppointment(db: Firestore, appointmentId: string) {
         errorEmitter.emit('permission-error', permissionError);
     });
 }
+
+export function subscribeToMobileUnitAlerts(
+  db: Firestore,
+  userId: string,
+  village: string
+) {
+  const alertCollection = collection(db, 'mobileUnitAlerts');
+  addDoc(alertCollection, {
+    userId,
+    village,
+    subscriptionDate: serverTimestamp(),
+  }).catch(async (serverError) => {
+    const permissionError = new FirestorePermissionError({
+      path: alertCollection.path,
+      operation: 'create',
+      requestResourceData: { userId, village },
+    } satisfies SecurityRuleContext);
+    errorEmitter.emit('permission-error', permissionError);
+  });
+}

@@ -42,7 +42,7 @@ const servicesData: Service[] = [
         name: "Mobile Medical Unit",
         description: "Schedule and locations for the mobile health clinic.",
         icon: HeartPulse,
-        href: "#",
+        href: "/services/mobile-medical-unit",
       },
       {
         name: "Telemedicine Services",
