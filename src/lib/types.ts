@@ -127,6 +127,7 @@ export type CourseLesson = {
   videoId: string;
   title: string;
   summary: string;
+  steps: string[];
 };
 
 export type Course = {
