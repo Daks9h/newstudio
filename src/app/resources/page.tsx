@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { Resource } from "@/lib/types";
@@ -13,6 +14,7 @@ const resourcesData: Resource[] = [
     type: "Video",
     image: PlaceHolderImages.find(img => img.id === 'resource-computer-basics')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(img => img.id === 'resource-computer-basics')?.imageHint || '',
+    youtubeLink: "https://www.youtube.com/results?search_query=computer+basics+tutorial",
   },
   {
     id: "resource-internet-safety",
@@ -21,6 +23,7 @@ const resourcesData: Resource[] = [
     type: "Guide",
     image: PlaceHolderImages.find(img => img.id === 'resource-internet-safety')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(img => img.id === 'resource-internet-safety')?.imageHint || '',
+    youtubeLink: "https://www.youtube.com/results?search_query=internet+safety+guide",
   },
   {
     id: "resource-digital-payments",
@@ -29,6 +32,7 @@ const resourcesData: Resource[] = [
     type: "Video",
     image: PlaceHolderImages.find(img => img.id === 'resource-digital-payments')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(img => img.id === 'resource-digital-payments')?.imageHint || '',
+    youtubeLink: "https://www.youtube.com/results?search_query=digital+payments+tutorial",
   },
   {
     id: "resource-online-services",
@@ -37,6 +41,7 @@ const resourcesData: Resource[] = [
     type: "Article",
     image: PlaceHolderImages.find(img => img.id === 'resource-online-services')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(img => img.id === 'resource-online-services')?.imageHint || '',
+    youtubeLink: "https://www.youtube.com/results?search_query=how+to+access+government+services+online",
   },
 ];
 
@@ -54,23 +59,25 @@ export default function ResourcesPage() {
       </p>
       <div className="grid gap-6 pt-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {resourcesData.map((resource) => (
-          <Card key={resource.id} className="overflow-hidden transition-all hover:shadow-lg">
-            <CardHeader className="p-0">
-              <Image
-                src={resource.image}
-                alt={resource.title}
-                width={600}
-                height={400}
-                className="w-full h-40 object-cover"
-                data-ai-hint={resource.imageHint}
-              />
-            </CardHeader>
-            <CardContent className="p-4">
-              <Badge variant="secondary" className="mb-2">{resource.type}</Badge>
-              <h3 className="text-lg font-semibold mb-1 font-headline">{resource.title}</h3>
-              <p className="text-sm text-muted-foreground">{resource.description}</p>
-            </CardContent>
-          </Card>
+          <Link key={resource.id} href={resource.youtubeLink} target="_blank" rel="noopener noreferrer" className="block">
+            <Card className="overflow-hidden transition-all hover:shadow-lg h-full">
+              <CardHeader className="p-0">
+                <Image
+                  src={resource.image}
+                  alt={resource.title}
+                  width={600}
+                  height={400}
+                  className="w-full h-40 object-cover"
+                  data-ai-hint={resource.imageHint}
+                />
+              </CardHeader>
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">{resource.type}</Badge>
+                <h3 className="text-lg font-semibold mb-1 font-headline">{resource.title}</h3>
+                <p className="text-sm text-muted-foreground">{resource.description}</p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>

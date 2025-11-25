@@ -16,6 +16,7 @@ export type Resource = {
   type: 'Video' | 'Guide' | 'Article';
   image: string;
   imageHint: string;
+  youtubeLink: string;
 };
 
 export type ForumPost = {
