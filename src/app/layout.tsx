@@ -3,6 +3,7 @@ import './globals.css';
 import { AppLayout } from '@/components/layout/app-layout';
 import { Toaster } from "@/components/ui/toaster"
 import { FirebaseProvider } from '@/firebase/provider';
+import { ProtectedLayout } from '@/components/layout/protected-layout';
 
 export const metadata: Metadata = {
   title: 'Digital सखी',
@@ -26,7 +27,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <FirebaseProvider>
-          <AppLayout>{children}</AppLayout>
+            <ProtectedLayout>
+              <AppLayout>{children}</AppLayout>
+            </ProtectedLayout>
         </FirebaseProvider>
         <Toaster />
       </body>
