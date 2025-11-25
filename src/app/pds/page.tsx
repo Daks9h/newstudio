@@ -20,9 +20,10 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Calendar } from '@/components/ui/calendar';
-import { List, MapPin, Wheat, FileWarning, ArrowRight, Smartphone, Calendar as CalendarIcon } from 'lucide-react';
+import { List, MapPin, Wheat, FileWarning, ArrowRight, Smartphone, Calendar as CalendarIcon, ArrowLeft } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const fairPriceShops = [
     { name: 'Janseva Kendra', address: '123, Main Road, Near Post Office' },
@@ -34,6 +35,7 @@ export default function PDSPage() {
   const [rationCardNumber, setRationCardNumber] = useState('');
   const [rationStatus, setRationStatus] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleStatusCheck = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,7 +60,13 @@ export default function PDSPage() {
   return (
     <div className="flex-1 space-y-8 p-4 md:p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight font-headline">Public Distribution System (PDS)</h1>
+        <div className="flex items-center gap-4">
+          <Button variant="outline" size="icon" onClick={() => router.back()}>
+            <ArrowLeft className="h-4 w-4" />
+            <span className="sr-only">Go back</span>
+          </Button>
+          <h1 className="text-3xl font-bold tracking-tight font-headline">Public Distribution System (PDS)</h1>
+        </div>
         <div className="md:hidden">
           <SidebarTrigger />
         </div>
