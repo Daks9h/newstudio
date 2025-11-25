@@ -41,3 +41,8 @@ export type AnalyticsStat = {
   changeType: 'positive' | 'negative';
   icon: LucideIcon;
 };
+
+export type ChatMessage = {
+  role: 'user' | 'assistant';
+  content: string;
+};

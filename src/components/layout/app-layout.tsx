@@ -23,6 +23,7 @@ import {
   MessagesSquare,
   LogOut,
   LogIn,
+  Mic,
 } from 'lucide-react';
 import { useAuth } from '@/firebase/provider';
 import {
@@ -45,6 +46,7 @@ const navItems = [
   { href: '/forum', label: 'Community Forum', icon: MessagesSquare },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },
   { href: '/regional-insights', label: 'Regional Insights', icon: BrainCircuit },
+  { href: '/chat', label: 'Chat Assistant', icon: Mic },
 ];
 
 function UserMenu() {

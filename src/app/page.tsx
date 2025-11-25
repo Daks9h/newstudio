@@ -13,6 +13,7 @@ import {
   BarChart3,
   BrainCircuit,
   ArrowRight,
+  Mic,
 } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
@@ -52,6 +53,12 @@ const features = [
     description: "Generate content suggestions for your locale.",
     href: "/regional-insights",
     icon: BrainCircuit,
+  },
+  {
+    title: "Chat Assistant",
+    description: "Ask questions and get help from our AI assistant.",
+    href: "/chat",
+    icon: Mic,
   },
 ];
 
