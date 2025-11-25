@@ -81,7 +81,7 @@ const requestSchema = z.object({
 export default function ServiceRequestPage() {
   const { toast } = useToast();
   const { user } = useAuth();
-  const { firestore } = useFirebase();
+  const { firestore } = useFirebase() as any; // Firestore is not typed in the provider yet
   const router = useRouter();
 
   const form = useForm<ServiceRequestForm>({
@@ -129,7 +129,7 @@ export default function ServiceRequestPage() {
           <CardDescription>
             Please fill out the form below to request a service from the
             village office.
-          </-carddescription>
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
