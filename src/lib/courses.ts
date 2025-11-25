@@ -9,17 +9,17 @@ export const allCourses: Course[] = [
     icon: Wallet,
     lessons: [
       {
-        videoId: 'zNViBptv4cw',
+        videoId: '2pIn2Kj2M2Y',
         title: 'Lesson 1: Introduction to Digital Payments',
         summary: 'Learn the basics of what digital payments are and why they are important for financial inclusion in rural areas.',
       },
       {
-        videoId: '5g4hV8gGjG0',
+        videoId: 'P6UPoVdJ34g',
         title: 'Lesson 2: Setting Up and Using UPI',
         summary: 'A step-by-step guide on how to set up a UPI account on your smartphone and make your first transaction securely.',
       },
       {
-        videoId: 'CwA61y2i64s',
+        videoId: 'i_t5d2DB2s4',
         title: 'Lesson 3: Staying Safe with Online Transactions',
         summary: 'Understand the common risks associated with digital payments and learn best practices to keep your money and data safe.',
       },
@@ -49,17 +49,17 @@ export const allCourses: Course[] = [
     icon: Laptop,
     lessons: [
       {
-        videoId: '7c06W5T30iY',
+        videoId: 'B2pA06A3-yY',
         title: 'Lesson 1: What is a Computer?',
         summary: 'An introduction to the different parts of a computer (monitor, CPU, keyboard, mouse) and what they do.',
       },
       {
-        videoId: 'XTeiQJ-anvM',
+        videoId: 'E99s4o1Z3aI',
         title: 'Lesson 2: Using the Keyboard and Mouse',
         summary: 'Learn how to type using the keyboard and how to click, double-click, and right-click with a mouse.',
       },
       {
-        videoId: 'f32T5w2A-Cg',
+        videoId: 'aKRYa21-93M',
         title: 'Lesson 3: Understanding Files & Folders',
         summary: 'Discover how to create, open, save, and organize your documents and pictures using files and folders.',
       },
@@ -89,17 +89,17 @@ export const allCourses: Course[] = [
     icon: Globe,
     lessons: [
       {
-        videoId: 'IysG5lhr1YY',
+        videoId: 'sS_PsVNr4a4',
         title: 'Lesson 1: What are e-Governance Services?',
         summary: 'An overview of how governments provide services online and the benefits of using digital platforms like official portals and apps.',
       },
       {
-        videoId: 'Y0gAfwvOyQc',
+        videoId: 'g-n7a0R3_bA',
         title: 'Lesson 2: Using DigiLocker for Your Documents',
         summary: 'Learn how to set up and use DigiLocker to store and share your important documents like Aadhaar and driving license digitally.',
       },
       {
-        videoId: 'YkbqXO9m5wE',
+        videoId: '9rvMVq5a9q0',
         title: 'Lesson 3: How to Navigate a Government Website',
         summary: 'A practical guide on how to find the "Apply Now" or "Check Status" sections on a typical government scheme website.',
       },
@@ -129,17 +129,17 @@ export const allCourses: Course[] = [
     icon: Lock,
     lessons: [
       {
-        videoId: 'vCq4a8gW-c4',
+        videoId: 'pL3oB-5o30Y',
         title: 'Lesson 1: Creating Strong Passwords',
         summary: 'Learn the principles of creating a password that is difficult for others to guess but easy for you to remember.',
       },
       {
-        videoId: 'L3Izb84y6yM',
+        videoId: 'ybrvWd37p9w',
         title: 'Lesson 2: Identifying Online Scams (Phishing)',
         summary: 'Understand how to spot fake emails, messages, and websites that try to steal your personal information like PINs and passwords.',
       },
       {
-        videoId: 't0hfb3cLS_I',
+        videoId: 'J3aUhb9kHhg',
         title: 'Lesson 3: What is OTP and Why You Should Never Share It',
         summary: 'Learn what a One-Time Password (OTP) is, why it is used, and the absolute rule of never sharing it with anyone.',
       },
