@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Leaf, HeartPulse, Users, Home, Flame } from "lucide-react";
+import { Leaf, HeartPulse, Users, Home, Flame, Shield, Droplets, Banknote, School, Sprout } from "lucide-react";
 import type { GovernmentScheme } from "@/lib/types";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import Link from 'next/link';
@@ -37,6 +37,36 @@ const schemesData: GovernmentScheme[] = [
     description: "Provides clean cooking fuel (LPG) to women from BPL households.",
     icon: Flame,
     applyLink: "/application?scheme=Ujjwala-Yojana",
+  },
+  {
+    name: "PM Fasal Bima Yojana",
+    description: "Crop insurance for farmers against yield losses.",
+    icon: Shield,
+    applyLink: "/application?scheme=PM-Fasal-Bima-Yojana",
+  },
+   {
+    name: "Jal Jeevan Mission",
+    description: "Aims to provide safe and adequate drinking water through individual household tap connections.",
+    icon: Droplets,
+    applyLink: "/application?scheme=Jal-Jeevan-Mission",
+  },
+  {
+    name: "PM Jan Dhan Yojana",
+    description: "National mission for financial inclusion to ensure access to financial services.",
+    icon: Banknote,
+    applyLink: "/application?scheme=PM-Jan-Dhan-Yojana",
+  },
+  {
+    name: "Samagra Shiksha Abhiyan",
+    description: "An integrated scheme for school education, extending from pre-school to senior secondary.",
+    icon: School,
+    applyLink: "/application?scheme=Samagra-Shiksha-Abhiyan",
+  },
+   {
+    name: "National Food Security Mission",
+    description: "Aims to increase the production of rice, wheat, pulses, and coarse cereals.",
+    icon: Sprout,
+    applyLink: "/application?scheme=National-Food-Security-Mission",
   },
 ];
 
