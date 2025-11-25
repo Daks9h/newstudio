@@ -1,3 +1,4 @@
+
 'use client';
 import {
   doc,
@@ -12,7 +13,7 @@ import {
   FirestorePermissionError,
   type SecurityRuleContext,
 } from '@/firebase/errors';
-import type { UserProfile } from '@/lib/types';
+import type { UserProfile, PDSComplaint } from '@/lib/types';
 
 export function updateUserProfile(
   db: Firestore,
@@ -57,4 +58,25 @@ export function saveCourseProgress(
     } satisfies SecurityRuleContext);
     errorEmitter.emit('permission-error', permissionError);
   });
+}
+
+export function savePDSComplaint(
+  db: Firestore,
+  complaint: Omit<PDSComplaint, 'complaintDate' | 'status'>
+) {
+    const complaintCollection = collection(db, 'pdsComplaints');
+    const newComplaint = {
+        ...complaint,
+        status: 'Open',
+        complaintDate: serverTimestamp(),
+    };
+    addDoc(complaintCollection, newComplaint)
+    .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+            path: complaintCollection.path,
+            operation: 'create',
+            requestResourceData: newComplaint,
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+    });
 }

@@ -6,6 +6,7 @@ export type Service = {
     name: string;
     description: string;
     icon: LucideIcon;
+    href?: string;
   }[];
 };
 
@@ -48,7 +49,7 @@ export type ChatMessage = {
 };
 
 export type GovernmentScheme = {
-  name: string;
+  name:string;
   description: string;
   icon: LucideIcon;
   applyLink: string;
@@ -72,4 +73,13 @@ export type QuizQuestion = {
   question: string;
   options: string[];
   correctAnswer: string;
+};
+
+export type PDSComplaint = {
+  userId: string;
+  rationCardNumber: string;
+  shopName: string;
+  description: string;
+  status: 'Open' | 'Resolved' | 'Closed';
+  complaintDate: any;
 };
