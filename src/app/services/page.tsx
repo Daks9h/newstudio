@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Landmark, HeartPulse, GraduationCap, Building2, Users, PhoneCall, School, ArrowRight } from "lucide-react";
+import { Landmark, HeartPulse, GraduationCap, Building2, Users, PhoneCall, School, ArrowRight, Laptop } from "lucide-react";
 import type { Service } from "@/lib/types";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import Link from "next/link";
@@ -68,6 +68,12 @@ const servicesData = [
         icon: GraduationCap,
         href: "/resources",
       },
+      {
+        name: "Digital Skilling Center",
+        description: "Access all courses on computer basics, internet, payments, and more.",
+        icon: Laptop,
+        href: "/resources",
+      }
     ],
   },
 ];
