@@ -114,19 +114,39 @@ export default function PDSPage() {
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Eligibility Criteria</AccordionTrigger>
                   <AccordionContent>
-                    Detailed information about who is eligible for BPL, APL, and other types of ration cards based on income and family size.
+                    <p className="mb-2">Eligibility for ration cards depends on your family's income level and is determined by state government guidelines. The main categories are:</p>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                      <li><strong>BPL (Below Poverty Line):</strong> For families with low income. They receive food grains at highly subsidized prices.</li>
+                      <li><strong>AAY (Antyodaya Anna Yojana):</strong> For the poorest of the poor families. They are entitled to the highest level of subsidy.</li>
+                      <li><strong>APL (Above Poverty Line):</strong> For families with income above the poverty line. They receive food grains at a less subsidized rate.</li>
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger>How to Apply for a New Card</AccordionTrigger>
                   <AccordionContent>
-                    Step-by-step guide on the application process, required documents (Aadhaar, address proof, income certificate), and where to submit your application.
+                    <p className="mb-2">You can apply for a new ration card online through your state's food portal or offline at the local food and civil supplies office. You will generally need the following documents:</p>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>Application Form:</strong> Correctly filled out.</li>
+                        <li><strong>Identity Proof:</strong> Aadhaar Card, Voter ID, or Driving License.</li>
+                        <li><strong>Address Proof:</strong> Electricity Bill, Water Bill, or Bank Passbook.</li>
+                        <li><strong>Income Certificate:</strong> Issued by a competent authority.</li>
+                        <li><strong>Photographs:</strong> Passport-sized photos of the head of the family.</li>
+                        <li><strong>Family Details:</strong> Aadhaar cards of all family members.</li>
+                        <li><strong>Affidavit:</strong> A declaration that you do not hold a ration card in any other state.</li>
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger>How to Update Existing Card</AccordionTrigger>
                   <AccordionContent>
-                    Instructions for adding/removing family members, changing address, and correcting other details on your existing ration card.
+                    <p className="mb-2">To make changes like adding or removing a family member, or correcting an address, you need to submit a specific form at the food office with supporting documents.</p>
+                     <ul className="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>To Add a Member (e.g., newborn):</strong> Submit the child's birth certificate along with the ration card.</li>
+                        <li><strong>To Add a Member (e.g., new bride):</strong> Submit the marriage certificate and a surrender certificate for her previous ration card.</li>
+                        <li><strong>To Change Address:</strong> Provide new address proof like an electricity bill or rent agreement.</li>
+                        <li><strong>To Remove a Member:</strong> A death certificate is required in case of a member's demise.</li>
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
