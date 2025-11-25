@@ -45,7 +45,6 @@ const navItems = [
   { href: '/services', label: 'Service Directory', icon: BookOpenCheck },
   { href: '/schemes', label: 'Government Schemes', icon: FileText },
   { href: '/resources', label: 'Digital Literacy', icon: GraduationCap },
-  { href: '/course', label: 'Digital Course', icon: BrainCircuit },
   { href: '/progress', label: 'Progress Tracking', icon: LineChart },
   { href: '/forum', label: 'Community Forum', icon: MessagesSquare },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },

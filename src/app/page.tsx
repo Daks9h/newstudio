@@ -33,15 +33,9 @@ const features = [
   },
   {
     title: "Digital Literacy",
-    description: "Improve your digital skills with our resources.",
+    description: "Improve your digital skills with our interactive course.",
     href: "/resources",
     icon: GraduationCap,
-  },
-   {
-    title: "Digital Course",
-    description: "Take an interactive course with videos and quizzes.",
-    href: "/course",
-    icon: BrainCircuit,
   },
   {
     title: "Progress Tracking",
